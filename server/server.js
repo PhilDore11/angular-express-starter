@@ -1,9 +1,11 @@
+'use strict';
+
 var path = require('path');
 var bodyParser = require('body-parser');
 var express = require('express');
 var logger = require('morgan');
 var mongoose = require('mongoose');
-var cors = require('cors')
+var cors = require('cors');
 
 var config = require('./config');
 

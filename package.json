@@ -16,5 +16,6 @@
   "scripts": {
     "start": "node server/server.js"
   },
-  "main": "server/server.js"
+  "main": "server/server.js",
+  "devDependencies": {}
 }

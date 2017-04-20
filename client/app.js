@@ -1,34 +1,30 @@
-angular.module('myApp', [
+'use strict';
+
+angular.module('app', [
   'ngResource',
   'ngMessages',
   'ngMaterial',
+  'md.data.table',
   'ui.router',
   'satellizer',
+  'mdSteppers',
 
-  'myApp.navbar',
-  'myApp.passwordMatch',
-
-  'myApp.signup',
-  'myApp.profile',
-  'myApp.login',
-  'myApp.password',
-  'myApp.logout',
-  'myApp.home'
+  'app.home',
+  'app.reports'
 ])
 
   .config(function($stateProvider, $mdThemingProvider, $urlRouterProvider, $authProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
-      .accentPalette('grey');
+      .accentPalette('teal')
+      .warnPalette('red');
+
+    var whiteMap = $mdThemingProvider.extendPalette('grey', {
+      '500': '#ffffff',
+      'contrastDefaultColor': 'dark'
+    });
+    $mdThemingProvider.definePalette('white', whiteMap);
+
 
     $urlRouterProvider.otherwise('/home');
-
-    $authProvider.facebook({
-      clientId: '1446453645668626'
-    });
-
-    $authProvider.google({
-      clientId: '154995491013-9vuhtdo8drlfjql5eiesd36vm8c82i00.apps.googleusercontent.com'
-    });
-
   });
