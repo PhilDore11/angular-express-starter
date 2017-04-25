@@ -1,41 +1,44 @@
-<md-card ui-view>
-  <md-table-container>
-    <table md-table md-progress="promise">
-      <thead md-head md-order="query.order">
-        <tr md-row>
-          <th md-column md-order-by="nameToLower"><span>Report Name</span></th>
-          <th md-column md-order-by="nameToLower"><span>Outbreak Number</span></th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row md-select="report" md-select-id="name" md-auto-select ng-repeat="report in reports | orderBy: query.order">
-          <td md-cell>{{report.name}}</td>
-          <td md-cell>{{report.outbreakNumber}}</td>
-          <td md-cell>
-            <md-menu>
-              <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
-                <md-icon>more_vert</md-icon>
-              </md-button>
-              <md-menu-content>
-                <md-menu-item>
-                  <md-button ui-sref="reports.edit({reportId: report._id})">
-                    <md-icon>edit</md-icon>
-                    Edit
-                  </md-button>
-                </md-menu-item>
-                <md-menu-item>
-                  <md-button ng-click="deleteReport(report._id)">
-                    <md-icon>delete</md-icon>
-                    Delete
-                  </md-button>
-                </md-menu-item>
-              </md-menu-content>
-            </md-menu>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </md-table-container>
+<md-table-container>
+  <table md-table>
+    <thead class="md-whiteframe-1dp" md-colors="::{background: 'white'}" md-head md-order="query.order">
+      <tr md-row>
+        <th md-column md-order-by="name"><span>Report Name</span></th>
+        <th md-column md-order-by="outbreakNumber"><span>Outbreak Number</span></th>
+        <th md-column md-numeric md-order-by="reportedDate"><span>Reported Date</span></th>
+        <th md-column md-numeric md-order-by="modifiedDate"><span>Modified Date</span></th>
+        <th md-column><span>Actions</span></th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="report" md-select-id="name" md-auto-select ng-repeat="report in reports | orderBy: query.order">
+        <td md-cell>{{report.name}}</td>
+        <td md-cell>{{report.outbreakNumber}}</td>
+        <td md-cell>{{report.reportedDate | date}}</td>
+        <td md-cell>{{report.modifiedDate | date}}</td>
+        <td md-cell>
+          <md-menu>
+            <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
+              <md-icon>more_vert</md-icon>
+            </md-button>
+            <md-menu-content>
+              <md-menu-item>
+                <md-button ui-sref="reports.edit({reportId: report._id})">
+                  <md-icon>edit</md-icon>
+                  Edit
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ng-click="deleteReport(report._id)">
+                  <md-icon>delete</md-icon>
+                  Delete
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
 
-  <md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{reports.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>
-</md-card>
+<md-table-pagination class="md-whiteframe-1dp" md-colors="::{background: 'white'}" md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{reports.count}}" md-on-paginate="getDesserts" md-page-select></md-table-pagination>

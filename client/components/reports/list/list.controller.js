@@ -19,7 +19,7 @@ angular.module('app.reports.list', [])
     });
   })
 
-  .controller('ReportListController', function($scope, reports, ReportsService) {
+  .controller('ReportListController', function($scope, $state, reports, ReportsService) {
     $scope.query = {
       order: 'name',
       limit: 5,
@@ -30,6 +30,8 @@ angular.module('app.reports.list', [])
 
 
     $scope.deleteReport = function(reportId) {
-      ReportsService.deleteReport(reportId);
+      ReportsService.deleteReport(reportId).then(function() {
+        $state.go('reports.list', {}, {reload: true});
+      });
     };
   });

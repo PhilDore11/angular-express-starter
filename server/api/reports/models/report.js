@@ -2,6 +2,9 @@ var mongoose = require('mongoose');
 
 // create a schema
 var reportSchema = new mongoose.Schema({
+  modifiedDate: Date,
+  createdDate: Date,
+
   name: String,
   outbreakNumber: String,
   reportedDate: Date,

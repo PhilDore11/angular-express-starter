@@ -44,7 +44,12 @@ router.get('/:id', function(req, res) {
 * Create a report
 */
 router.post('/', function(req, res) {
-  var newReport = new Report(req.body);
+  var reportData = req.body;
+  reportData.createdDate = new Date();
+  reportData.modifiedDate = new Date();
+
+  var newReport = new Report(reportData);
+
   newReport.save(function(err, report) {
     if (err) {
       validationError(res, err);
@@ -65,6 +70,8 @@ router.put('/:id', function(req, res) {
     }
     else {
       report = _.assign(report, req.body);
+
+      report.modifiedDate = new Date();
 
       report.save(function(err, report) {
         if (err) {

@@ -18,7 +18,13 @@
 
   <body layout="column">
     <osr-navbar></osr-navbar>
-    <md-content ui-view></md-content>
+    <md-content flex ui-view></md-content>
+    <div layout="row" layout-margin>
+      <div flex></div>
+      <md-button class="md-fab md-primary md-hue-2" ui-sref="reports.add" aria-label="Create New Report">
+        <md-icon>add</md-icon>
+      </md-button>
+    </div>
 
     <!-- Third-party Libraries -->
     <script src="bower_components/angular/angular.js"></script>
