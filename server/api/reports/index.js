@@ -1,40 +1,81 @@
 'use strict';
 
+var _ = require('lodash');
+
 var express = require('express');
 var router = express.Router();
 
-var stubReports = require('./reports.stub.js');
+var Report = require('./models/report.js');
+
+function validationError(res, err) {
+  res.status(422).json(err);
+}
 
 /*
 * Return a list of reports
 */
 router.get('/', function(req, res) {
-  res.json(stubReports);
+  Report.find({}, function(err, reports) {
+    if (err) {
+      validationError(res, err);
+    }
+    else {
+      res.json(reports);
+    }
+  });
 });
 
 /*
 * Return a report
 */
 router.get('/:id', function(req, res) {
-  var report = stubReports.find(function(item) {
-    return item.id === parseInt(req.params.id);
+  Report.findById(req.params.id, function(err, report) {
+    if (err) {
+      validationError(res, err);
+    }
+    else {
+      res.json(report);
+    }
   });
-  res.json(report);
 });
 
 
 /*
 * Create a report
 */
-router.post('/:id', function(req, res) {
-  res.send('Report Created!');
+router.post('/', function(req, res) {
+  var newReport = new Report(req.body);
+  newReport.save(function(err, report) {
+    if (err) {
+      validationError(res, err);
+    }
+    else {
+      res.json(report);
+    }
+  });
 });
 
 /*
 * Update a report
 */
-router.post('/:id', function(req, res) {
-  res.send('Report Updated!');
+router.put('/:id', function(req, res) {
+  Report.findById(req.params.id, function(err, report) {
+    if (err) {
+      validationError(res, err);
+    }
+    else {
+      report = _.assign(report, req.body);
+
+      report.save(function(err, report) {
+        if (err) {
+          validationError(res, err);
+        }
+        else {
+          res.json(report);
+        }
+      });
+    }
+  });
 });
 
 
@@ -42,7 +83,14 @@ router.post('/:id', function(req, res) {
 * Delete a report
 */
 router.delete('/:id', function(req, res) {
-  res.send('Report Deleted!');
+  Report.findByIdAndRemove(req.params.id, function(err, report) {
+    if (err) {
+      validationError(res, err);
+    }
+    else {
+      res.json(report);
+    }
+  });
 });
 
 module.exports = router;

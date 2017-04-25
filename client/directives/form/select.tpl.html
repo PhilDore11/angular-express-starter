@@ -1,7 +1,7 @@
 <md-input-container class="md-block" ng-if="!readonly">
   <label>{{label}}</label>
-  <md-select ng-model="form[prop]">
-    <md-option ng-repeat="option in options | filter: filter" ng-value="option[key] || option">
+  <md-select ng-model="form[prop]"  ng-model-options="{trackBy: '$value.key'}">
+    <md-option ng-repeat="option in options | filter: filter" ng-value="option">
       {{option[value] || option}}
     </md-option>
   </md-select>

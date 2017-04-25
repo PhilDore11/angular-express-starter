@@ -17,7 +17,7 @@ angular.module('app.reports')
   function showError(successText) {
     $mdToast.show(
       $mdToast.simple()
-        .theme('success-error')
+        .theme('success-toast')
         .textContent(successText)
         .position('bottom right')
         .hideDelay(3000)
@@ -52,13 +52,12 @@ angular.module('app.reports')
       return promise($http.get('/api/reports/' + reportId));
     },
 
-    addReport: function(report, successLabel) {
-      console.log('report', report);
-      return promise($http.post('/api/reports/', report), true, successLabel, 'Error Creating Report');
+    addReport: function(reportId, successLabel) {
+      return promise($http.post('/api/reports/' + reportId), true, successLabel, 'Error Saving Report');
     },
 
-    saveReport: function(report, successLabel) {
-      return promise($http.put('/api/reports/' + report._id, report), true, successLabel, 'Error Saving Report');
+    saveReport: function(reportId, successLabel) {
+      return promise($http.put('/api/reports/' + reportId), true, successLabel, 'Error Saving Report');
     },
 
     deleteReport: function(reportId) {

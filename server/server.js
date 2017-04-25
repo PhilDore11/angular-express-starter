@@ -9,9 +9,11 @@ var cors = require('cors');
 
 var config = require('./config');
 
-mongoose.connect(config.MONGO_URI);
-mongoose.connection.on('error', function() {
-  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb://osrAdmin:osrAdminPwd@cluster0-shard-00-00-wcgvv.mongodb.net:27017,cluster0-shard-00-01-wcgvv.mongodb.net:27017,cluster0-shard-00-02-wcgvv.mongodb.net:27017/osr?authSource=admin&readPreference=primary&ssl=true');
+mongoose.connection.on('error', function(err) {
+  console.error(err, 'MongoDB Connection Error. Please make sure that MongoDB is running.');
 });
 
 var app = express();
@@ -28,6 +30,12 @@ app.use(express.static(path.join(__dirname, '../client')));
 
 // set up the routes
 require('./routes')(app);
+
+// error handler
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500).send(err);
+});
 
 // start the server
 app.listen(app.get('port'), function() {

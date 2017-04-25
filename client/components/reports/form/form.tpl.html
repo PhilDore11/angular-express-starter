@@ -56,6 +56,18 @@
           <md-card>
             <md-card-title>
               <md-card-title-text>
+                Facility Information
+              </md-card-title-text>
+            </md-card-title>
+            <md-divider></md-divider>
+            <md-card-content>
+              <ng-include src="'components/reports/form/facilityInfo.tpl.html'" ng-init="readonly = true"></ng-include>
+            </md-card-content>
+          </md-card>
+
+          <md-card>
+            <md-card-title>
+              <md-card-title-text>
                 Infection Information
               </md-card-title-text>
             </md-card-title>

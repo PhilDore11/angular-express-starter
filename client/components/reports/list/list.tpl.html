@@ -4,18 +4,13 @@
       <thead md-head md-order="query.order">
         <tr md-row>
           <th md-column md-order-by="nameToLower"><span>Report Name</span></th>
-          <th md-column md-numeric><span>Date Created</span></th>
-          <th md-column md-numeric>Date Modified</th>
-          <th md-column md-numeric>Status</th>
-          <th md-column md-numeric>Actions</th>
+          <th md-column md-order-by="nameToLower"><span>Outbreak Number</span></th>
         </tr>
       </thead>
       <tbody md-body>
         <tr md-row md-select="report" md-select-id="name" md-auto-select ng-repeat="report in reports | orderBy: query.order">
           <td md-cell>{{report.name}}</td>
-          <td md-cell>{{report.dateCreated | date}}</td>
-          <td md-cell>{{report.dateModified | date}}</td>
-          <td md-cell>{{report.status}}</td>
+          <td md-cell>{{report.outbreakNumber}}</td>
           <td md-cell>
             <md-menu>
               <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
@@ -23,13 +18,13 @@
               </md-button>
               <md-menu-content>
                 <md-menu-item>
-                  <md-button ui-sref="reports.edit({reportId: report.id})">
+                  <md-button ui-sref="reports.edit({reportId: report._id})">
                     <md-icon>edit</md-icon>
                     Edit
                   </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                  <md-button ng-click="deleteReport(report.id)">
+                  <md-button ng-click="deleteReport(report._id)">
                     <md-icon>delete</md-icon>
                     Delete
                   </md-button>
