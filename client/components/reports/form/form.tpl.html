@@ -1,88 +1,47 @@
-<md-stepper id="addReportStepper"
+<md-stepper id="reportStepper"
   md-alternative="true"
-  md-linear="true">
+  md-linear="false">
   <md-step-actions>
-    <osr-form-actions stepper-id="addReportStepper" save-func="onSave", save-label="saveButtonLabel"></osr-form-actions>
+    <osr-form-actions stepper-id="reportStepper" save-func="onSave", save-label="saveButtonLabel"></osr-form-actions>
   </md-step-actions>
   <md-step md-label="Outbreak Information">
-    <md-step-body layout-padding>
-      <div layout="row">
-        <div flex="20"></div>
-        <div flex>
-          <ng-include src="'components/reports/form/outbreakInfo.tpl.html'"></ng-include>
-        </div>
-        <div flex="20"></div>
-      </div>
-    </md-step-body>
+    <osr-form-section
+      icon="assignment"
+      title="Outbreak Information">
+      <ng-include src="'components/reports/form/outbreakInfo.tpl.html'">
+    </osr-form-section>
   </md-step>
   <md-step md-label="Facility Information">
-    <md-step-body layout-padding>
-      <div layout="row">
-        <div flex="20"></div>
-        <div flex>
-          <ng-include src="'components/reports/form/facilityInfo.tpl.html'"></ng-include>
-        </div>
-        <div flex="20"></div>
-      </div>
-    </md-step-body>
+    <osr-form-section
+      icon="domain"
+      title="Facility Information">
+      <ng-include src="'components/reports/form/facilityInfo.tpl.html'">
+    </osr-form-section>
   </md-step>
   <md-step md-label="Infection Information">
-    <md-step-body layout-padding>
-      <div layout="row">
-        <div flex="20"></div>
-        <div flex>
-          <ng-include src="'components/reports/form/infectionInfo.tpl.html'"></ng-include>
-        </div>
-        <div flex="20"></div>
-      </div>
-    </md-step-body>
+    <osr-form-section
+      icon="bubble_chart"
+      title="Infection Information">
+      <ng-include src="'components/reports/form/infectionInfo.tpl.html'">
+    </osr-form-section>
   </md-step>
   <md-step md-label="Review & Save">
-    <md-step-body layout-padding>
-      <div layout="row">
-        <div flex>
-          <md-card>
-            <md-card-header>
-              <md-card-header-text>
-                Outbreak Information
-              </md-card-header-text>
-            </md-card-header>
-            <md-divider></md-divider>
-            <md-card-content>
-              <ng-include src="'components/reports/form/outbreakInfo.tpl.html'" ng-init="readonly = true"></ng-include>
-            </md-card-content>
-          </md-card>
+    <osr-form-section
+      icon="assignment"
+      title="Outbreak Information">
+      <ng-include src="'components/reports/form/outbreakInfo.tpl.html'" ng-init="readonly = true">
+    </osr-form-section>
 
-          <md-card>
-            <md-card-title>
-              <md-card-title-text>
-                Facility Information
-              </md-card-title-text>
-            </md-card-title>
-            <md-divider></md-divider>
-            <md-card-content>
-              <ng-include src="'components/reports/form/facilityInfo.tpl.html'" ng-init="readonly = true"></ng-include>
-            </md-card-content>
-          </md-card>
+    <osr-form-section
+      icon="domain"
+      title="Facility Information">
+      <ng-include src="'components/reports/form/facilityInfo.tpl.html'" ng-init="readonly = true">
+    </osr-form-section>
 
-          <md-card>
-            <md-card-title>
-              <md-card-title-text>
-                Infection Information
-              </md-card-title-text>
-            </md-card-title>
-            <md-divider></md-divider>
-            <md-card-content>
-              <ng-include src="'components/reports/form/infectionInfo.tpl.html'" ng-init="readonly = true"></ng-include>
-            </md-card-content>
-          </md-card>
-        </div>
-      </div>
-    </md-step-body>
-  </md-step>
-  <md-step md-label="Success">
-    <md-step-body>
-      <ng-include src="'components/reports/form/success.tpl.html'"></ng-include>
-    </md-step-body>
+    <osr-form-section
+      icon="bubble_chart"
+      title="Infection Information">
+      <ng-include src="'components/reports/form/infectionInfo.tpl.html'" ng-init="readonly = true">
+    </osr-form-section>
   </md-step>
 </md-stepper>

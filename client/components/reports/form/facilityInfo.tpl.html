@@ -1,26 +1,32 @@
-<!-- Facility Name -->
-<osr-input-container type="text"
-  label="Facility Name"
-  form="report"
-  prop="facilityName"
-  readonly="readonly">
-</osr-input-container>
+<div flex layout="row">
+  <div flex="20"></div>
+  <div flex>
+    <!-- Facility Name -->
+    <osr-input-container type="text"
+      label="Facility Name"
+      form="report"
+      prop="facilityName"
+      readonly="readonly">
+    </osr-input-container>
 
-<!-- Facility Type -->
-<osr-select-container
-  label="Facility Type"
-  form="report"
-  prop="facilityType"
-  options="facilityTypes"
-  option-key="key"
-  option-value="name"
-  readonly="readonly">
-</osr-select-container>
+    <!-- Facility Type -->
+    <osr-select-container
+      label="Facility Type"
+      form="report"
+      prop="facilityType"
+      options="facilityTypes"
+      option-key="key"
+      option-value="name"
+      readonly="readonly">
+    </osr-select-container>
 
-<!-- Reported Date -->
-<osr-input-container type="date"
-  label="Reported Date"
-  form="report"
-  prop="reportedDate"
-  readonly="readonly">
-</osr-input-container>
+    <!-- Reported Date -->
+    <osr-input-container type="date"
+      label="Reported Date"
+      form="report"
+      prop="reportedDate"
+      readonly="readonly">
+    </osr-input-container>
+  </div>
+  <div flex="20"></div>
+</div>

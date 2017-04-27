@@ -43,7 +43,7 @@ angular.module('app.reports.edit.outbreakInfo', [])
     });
   })
 
-  .controller('ReportEditOutbreakInfoController', function($scope, report, facilityTypes, outbreakTypes, outbreakAgents, ReportsService) {
+  .controller('ReportEditOutbreakInfoController', function($scope, $state, report, facilityTypes, outbreakTypes, outbreakAgents, ReportsService) {
     $scope.report = report;
 
     $scope.facilityTypes = facilityTypes;
@@ -51,9 +51,10 @@ angular.module('app.reports.edit.outbreakInfo', [])
     $scope.outbreakAgents = outbreakAgents;
 
     $scope.saveButtonLabel = 'Save Report';
-    $scope.reportSuccessLabel = 'Report has been updated';
 
     $scope.onSave = function() {
-      ReportsService.saveReport($scope.report, $scope.reportSuccessLabel);
+      ReportsService.saveReport($scope.report, 'Report has been updated').then(function() {
+        $state.go('^.success');
+      });
     };
   });

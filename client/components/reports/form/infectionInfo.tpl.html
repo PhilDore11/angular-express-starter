@@ -1,43 +1,49 @@
-<!-- Outbreak Type -->
-<osr-select-container
-  label="Outbreak Type"
-  form="report"
-  prop="outbreakType"
-  options="outbreakTypes"
-  option-value="name"
-  readonly="readonly">
-</osr-select-container>
+<div flex layout="row">
+  <div flex="20"></div>
+  <div flex>
+    <!-- Outbreak Type -->
+    <osr-select-container
+      label="Outbreak Type"
+      form="report"
+      prop="outbreakType"
+      options="outbreakTypes"
+      option-value="name"
+      readonly="readonly">
+    </osr-select-container>
 
-<!-- Primary Agent -->
-<osr-select-container
-  label="Primary Agent"
-  form="report"
-  prop="primaryAgent"
-  options="outbreakAgents"
-  option-filter="{type: report.outbreakType.key}"
-  option-value="name"
-  readonly="readonly">
-</osr-select-container>
-<osr-input-container ng-if="report.primaryAgent.key === 'OTHER'"
-  label="Please Spefify"
-  form="report"
-  prop="primaryAgentSpec"
-  readonly="readonly">
-</osr-input-container>
+    <!-- Primary Agent -->
+    <osr-select-container
+      label="Primary Agent"
+      form="report"
+      prop="primaryAgent"
+      options="outbreakAgents"
+      option-filter="{type: report.outbreakType.key}"
+      option-value="name"
+      readonly="readonly">
+    </osr-select-container>
+    <osr-input-container ng-if="report.primaryAgent.key === 'OTHER'"
+      label="Please Spefify"
+      form="report"
+      prop="primaryAgentSpec"
+      readonly="readonly">
+    </osr-input-container>
 
-<!-- Secondary Agent -->
-<osr-select-container
-  label="Secondary Agent"
-  form="report"
-  prop="secondaryAgent"
-  options="outbreakAgents"
-  option-filter="{type: report.outbreakType.key}"
-  option-value="name"
-  readonly="readonly">
-</osr-select-container>
-<osr-input-container ng-if="report.secondaryAgent.key === 'OTHER'"
-  label="Please Spefify"
-  form="report"
-  prop="secondaryAgentSpec"
-  readonly="readonly">
-</osr-input-container>
+    <!-- Secondary Agent -->
+    <osr-select-container
+      label="Secondary Agent"
+      form="report"
+      prop="secondaryAgent"
+      options="outbreakAgents"
+      option-filter="{type: report.outbreakType.key}"
+      option-value="name"
+      readonly="readonly">
+    </osr-select-container>
+    <osr-input-container ng-if="report.secondaryAgent.key === 'OTHER'"
+      label="Please Spefify"
+      form="report"
+      prop="secondaryAgentSpec"
+      readonly="readonly">
+    </osr-input-container>
+  </div>
+  <div flex="20"></div>
+</div>

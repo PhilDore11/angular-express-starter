@@ -5,7 +5,7 @@
       <md-icon>check</md-icon>
     </div>
     <h1 class="md-display-1">
-      {{reportSuccessLabel}}
+      Report has been updated
     </h1>
     <p class="md-title">
       What next?
@@ -14,14 +14,19 @@
 
   <div layout="row">
     <osr-large-button
-      link="reports.list"
-      icon="list"
-      text="View list of Reports">
+      link="reports.edit.outbreakInfo"
+      icon="edit"
+      text="Report Information">
     </osr-large-button>
     <osr-large-button
-      link="reports.add"
-      icon="add"
-      text="Create new Report">
+      link="reports.edit.dataEntry"
+      icon="border_all"
+      text="Data Entry">
+    </osr-large-button>
+    <osr-large-button
+      link="reports.edit.epiCurve"
+      icon="show_chart"
+      text="Epi Curve">
     </osr-large-button>
   </div>
 
