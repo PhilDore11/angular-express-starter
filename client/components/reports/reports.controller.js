@@ -10,6 +10,6 @@ angular.module('app.reports', [
     $stateProvider.state('reports', {
       abstract: true,
       url: '/reports',
-      template: '<div ui-view></div>'
+      template: '<div ui-view layout-margin></div>'
     });
   });

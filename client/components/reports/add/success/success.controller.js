@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('app.reports.edit.success', [])
+angular.module('app.reports.add.success', [])
 
   .config(function($stateProvider) {
-    $stateProvider.state('reports.edit.success', {
+    $stateProvider.state('reports.add.success', {
       url: '/success',
-      templateUrl: 'components/reports/edit/success/success.tpl.html',
-      controller: 'ReportEditSuccessController',
+      templateUrl: 'components/reports/add/success/success.tpl.html',
+      controller: 'ReportAddSuccessController',
       resolve: {
         report: function($stateParams, ReportsService) {
           return ReportsService.getReport($stateParams.reportId);
@@ -26,6 +26,6 @@ angular.module('app.reports.edit.success', [])
     });
   })
 
-  .controller('ReportEditSuccessController', function($scope, $filter, report) {
+  .controller('ReportAddSuccessController', function($scope, $filter, report) {
     $scope.report = report;
   });

@@ -31,7 +31,7 @@ angular.module('app.reports.add', [])
     });
   })
 
-  .controller('ReportAddController', function($scope, facilityTypes, outbreakTypes, outbreakAgents, ReportsService) {
+  .controller('ReportAddController', function($scope, $state, facilityTypes, outbreakTypes, outbreakAgents, ReportsService) {
     $scope.report = {};
 
     $scope.facilityTypes = facilityTypes;
@@ -42,6 +42,8 @@ angular.module('app.reports.add', [])
     $scope.reportSuccessLabel = 'Report has been created';
 
     $scope.onSave = function() {
-      ReportsService.addReport($scope.report, $scope.reportSuccessLabel);
+      ReportsService.addReport($scope.report, $scope.reportSuccessLabel).then(function() {
+        $state.go('.success');
+      });
     };
   });
