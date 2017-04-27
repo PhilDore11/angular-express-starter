@@ -19,8 +19,14 @@ angular.module('app.reports.add', [])
         }
       },
       data: {
-        icon: 'add',
-        label: 'Create new Report'
+        title: {
+          label: 'Add Report'
+        },
+        actions: [{
+          icon: 'list',
+          state: 'reports.list',
+          label: 'Back to List'
+        }]
       }
     });
   })

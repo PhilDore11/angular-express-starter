@@ -22,11 +22,24 @@
             </md-button>
             <md-menu-content>
               <md-menu-item>
-                <md-button ui-sref="reports.edit({reportId: report._id})">
+                <md-button ui-sref="reports.edit.outbreakInfo({reportId: report._id})">
                   <md-icon>edit</md-icon>
-                  Edit
+                  Report Information
                 </md-button>
               </md-menu-item>
+              <md-menu-item>
+                <md-button ui-sref="reports.edit.dataEntry({reportId: report._id})">
+                  <md-icon>border_all</md-icon>
+                  Data Entry
+                </md-button>
+              </md-menu-item>
+              <md-menu-item>
+                <md-button ui-sref="reports.edit.epiCurve({reportId: report._id})">
+                  <md-icon>show_chart</md-icon>
+                  Epi Curve
+                </md-button>
+              </md-menu-item>
+              <md-divider></md-divider>
               <md-menu-item>
                 <md-button ng-click="deleteReport(report._id)">
                   <md-icon>delete</md-icon>

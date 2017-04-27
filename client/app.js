@@ -8,6 +8,7 @@ angular.module('app', [
   'ui.router',
   'satellizer',
   'mdSteppers',
+  'angularCharts',
 
   'app.home',
   'app.reports'
@@ -16,7 +17,7 @@ angular.module('app', [
   .config(function($stateProvider, $mdThemingProvider, $urlRouterProvider, $authProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('blue')
-      .accentPalette('teal')
+      .accentPalette('grey')
       .warnPalette('red');
 
     var whiteMap = $mdThemingProvider.extendPalette('grey', {

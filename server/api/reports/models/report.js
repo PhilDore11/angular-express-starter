@@ -24,7 +24,8 @@ var reportSchema = new mongoose.Schema({
   secondaryAgent: {
     key: String,
     name: String
-  }
+  },
+  data: Array
 });
 
 // the schema is useless so far

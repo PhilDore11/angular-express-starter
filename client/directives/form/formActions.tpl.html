@@ -1,6 +1,15 @@
 <div layout="row" layout-margin ng-if="stepper.currentStep < stepper.steps.length - 1">
-  <md-button ng-if="stepper.currentStep !== 0" class="md-primary" ng-click="stepper.back()">Back</md-button>
+  <md-button ng-if="stepper.currentStep !== 0" class="md-primary md-hue-2" ng-click="stepper.back()">
+    <md-icon>chevron_left</md-icon>
+    Back
+  </md-button>
   <div flex></div>
-  <md-button ng-if="stepper.currentStep !== stepper.steps.length - 2" class="md-primary md-raised" ng-click="stepper.next()">Next</md-button>
-  <md-button ng-if="stepper.currentStep === stepper.steps.length - 2" class="md-primary md-raised" ng-click="onSave()">{{saveLabel}}</md-button>
+  <md-button ng-if="stepper.currentStep !== stepper.steps.length - 2" class="md-primary md-hue-2 md-raised" ng-click="stepper.next()">
+    Next
+    <md-icon>chevron_right</md-icon>
+  </md-button>
+  <md-button ng-if="stepper.currentStep === stepper.steps.length - 2" class="md-primary md-hue-2 md-raised" ng-click="onSave()">
+    <md-icon>save</md-icon>
+    {{saveLabel}}
+  </md-button>
 </div>

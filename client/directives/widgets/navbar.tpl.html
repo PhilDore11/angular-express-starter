@@ -1,22 +1,21 @@
 <md-toolbar class="md-whiteframe-2dp md-hue-2">
   <div class="md-toolbar-tools">
-    <h1 class="md-headline">Outbreak Summary Report Manager</h1>
+    <p class="md-display-1">Outbreak Summary Report Manager</p>
   </div>
 </md-toolbar>
-<md-toolbar class="md-whiteframe-1dp" md-colors="{background: 'white'}">
+<md-toolbar ng-if="stateData" class="md-whiteframe-1dp" md-colors="{background: 'white'}">
   <div class="md-toolbar-tools">
-    <a class="md-button" ui-sref="home">
-      <md-icon md-colors="{color: 'grey'}">home</md-icon>
-      Home
-    </a>
-
-    <span><md-icon ng-if="stateData.label" md-colors="{color: 'grey'}">chevron_right</md-icon></span>
-
-    <span ng-if="stateData.label" class="md-button" disabled="disabled">
-      <md-icon md-colors="{color: 'grey'}">{{stateData.icon}}</md-icon>
-      {{stateData.label}}
-    </span>
-
+    <p ng-if="stateData.title.showReportName">
+      {{report.name}}<br/>
+      <small md-colors="{color: 'grey'}">{{stateData.title.label}}</small>
+    </p>
+    <p ng-if="!stateData.title.showReportName">
+      {{stateData.title.label}}
+    </p>
     <div flex></div>
+    <a class="md-button" ng-repeat="action in stateData.actions" ng-click="goToState(action.state, stateParams)">
+      <md-icon md-colors="{color: 'grey'}">{{action.icon}}</md-icon>
+      {{action.label}}
+    </a>
   </div>
 </md-toolbar>

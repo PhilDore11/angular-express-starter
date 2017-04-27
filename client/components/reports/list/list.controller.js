@@ -13,8 +13,14 @@ angular.module('app.reports.list', [])
         }
       },
       data: {
-        icon: 'list',
-        label: 'Report List'
+        title: {
+          label: 'Report List'
+        },
+        actions: [{
+          icon: 'home',
+          state: 'home',
+          label: 'Back to Home'
+        }]
       }
     });
   })
