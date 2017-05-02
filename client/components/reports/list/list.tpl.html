@@ -51,6 +51,13 @@
           </md-menu-item>
           <md-divider></md-divider>
           <md-menu-item>
+            <md-button ui-sref="reports.edit.print.preview({reportId: report._id})">
+              <md-icon>print</md-icon>
+              Print
+            </md-button>
+          </md-menu-item>
+          <md-divider></md-divider>
+          <md-menu-item>
             <md-button ng-click="deleteReport(report._id)">
               <md-icon>delete</md-icon>
               Delete

@@ -4,6 +4,7 @@ angular.module('app')
 
   .directive('osrInputContainer', function() {
     return {
+      replace: true,
       scope: {
         readonly: '=',
         type: '@',

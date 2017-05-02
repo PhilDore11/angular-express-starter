@@ -4,16 +4,16 @@
   </div>
 </md-toolbar>
 <md-toolbar ng-if="stateData" class="md-whiteframe-1dp" md-colors="{background: 'white'}">
-  <div layout="row" layout-padding>
+  <div layout="row" layout-padding layout-align="start center">
     <div ng-if="stateData.title.showReportName">
       {{report.name}} - #{{report.outbreakNumber}}<br/>
-      <small md-colors="{color: 'black'}">{{stateData.title.label}}</small>
+      <small class="hide-print" md-colors="{color: 'black'}">{{stateData.title.label}}</small>
     </div>
     <div ng-if="!stateData.title.showReportName">
       {{stateData.title.label}}
     </div>
     <div flex></div>
-    <a class="md-button" ng-repeat="action in stateData.actions" ng-click="goToState(action.state, stateParams)">
+    <a class="md-button hide-print" ng-repeat="action in stateData.actions" ng-click="goToState(action.state, stateParams)">
       <md-icon md-colors="{color: 'black'}">{{action.icon}}</md-icon>
       {{action.label}}
     </a>

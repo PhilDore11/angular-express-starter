@@ -1,14 +1,16 @@
-<md-input-container class="md-block" ng-if="!readonly">
-  <label>{{label}}</label>
-  <md-select ng-model="form[prop]"  ng-model-options="{trackBy: '$value.key'}">
-    <md-option ng-repeat="option in options | filter: filter" ng-value="option">
-      {{option[value] || option}}
-    </md-option>
-  </md-select>
-  <div class="md-errors-spacer"></div>
-</md-input-container>
+<div flex>
+  <md-input-container class="md-block" ng-if="!readonly">
+    <label>{{label}}</label>
+    <md-select ng-model="form[prop]"  ng-model-options="{trackBy: '$value.key'}">
+      <md-option ng-repeat="option in options | filter: filter" ng-value="option">
+        {{option[value] || option}}
+      </md-option>
+    </md-select>
+    <div class="md-errors-spacer"></div>
+  </md-input-container>
 
-<div ng-if="readonly" layout="row" layout-padding flex>
-  <div flex="30" class="text-right" md-colors="{color:'grey'}">{{label}}</div>
-  <div flex>{{form[prop][value]}}</div>
+  <div ng-if="readonly" layout="row" layout-padding flex>
+    <div flex="40" class="text-right" md-colors="{color:'grey'}">{{label}}</div>
+    <div flex>{{form[prop][value]}}</div>
+  </div>
 </div>

@@ -4,7 +4,8 @@ angular.module('app.reports.edit', [
   'app.reports.edit.outbreakInfo',
   'app.reports.edit.dataEntry',
   'app.reports.edit.epiCurve',
-  'app.reports.edit.success'
+  'app.reports.edit.success',
+  'app.reports.edit.print'
 ])
 
   .config(function($stateProvider) {

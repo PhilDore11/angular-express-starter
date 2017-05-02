@@ -18,8 +18,7 @@ router.get('/', function(req, res) {
   Report.find({}, function(err, reports) {
     if (err) {
       validationError(res, err);
-    }
-    else {
+    } else {
       res.json(reports);
     }
   });
@@ -32,8 +31,7 @@ router.get('/:id', function(req, res) {
   Report.findById(req.params.id, function(err, report) {
     if (err) {
       validationError(res, err);
-    }
-    else {
+    } else {
       res.json(report);
     }
   });
@@ -53,8 +51,7 @@ router.post('/', function(req, res) {
   newReport.save(function(err, report) {
     if (err) {
       validationError(res, err);
-    }
-    else {
+    } else {
       res.json(report);
     }
   });
@@ -67,8 +64,7 @@ router.put('/:id', function(req, res) {
   Report.findById(req.params.id, function(err, report) {
     if (err) {
       validationError(res, err);
-    }
-    else {
+    } else {
       report = _.assign(report, req.body);
 
       report.modifiedDate = new Date();
@@ -76,8 +72,7 @@ router.put('/:id', function(req, res) {
       report.save(function(err, report) {
         if (err) {
           validationError(res, err);
-        }
-        else {
+        } else {
           res.json(report);
         }
       });
@@ -93,8 +88,7 @@ router.delete('/:id', function(req, res) {
   Report.findByIdAndRemove(req.params.id, function(err, report) {
     if (err) {
       validationError(res, err);
-    }
-    else {
+    } else {
       res.json(report);
     }
   });

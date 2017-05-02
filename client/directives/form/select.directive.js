@@ -4,6 +4,7 @@ angular.module('app')
 
   .directive('osrSelectContainer', function() {
     return {
+      replace: true,
       scope: {
         readonly: '=',
         label: '@',

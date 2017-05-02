@@ -63,6 +63,9 @@ angular.module('app.reports')
 
     deleteReport: function(reportId) {
       return promise($http.delete('/api/reports/' + reportId), true, 'Report Deleted', 'Error Deleting Report');
+    },
+    createPdf: function(reportId) {
+      return promise($http.get('/api/reports/' + reportId + '/pdf'));
     }
   };
 });
