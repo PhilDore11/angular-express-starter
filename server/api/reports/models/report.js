@@ -1,9 +1,20 @@
+var _ = require('lodash');
+
 var mongoose = require('mongoose');
 
 // create a schema
 var reportSchema = new mongoose.Schema({
   modifiedDate: Date,
   createdDate: Date,
+
+  status: {
+    type: String,
+    enum: _.values(global.REPORT_STATUSES)
+  },
+  completedDate: Date,
+
+  approvalDate: Date,
+  approvedBy: Date,
 
   name: String,
   outbreakNumber: String,

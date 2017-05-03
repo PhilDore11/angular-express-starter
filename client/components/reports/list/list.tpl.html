@@ -1,6 +1,7 @@
 <div>
   <md-toolbar class="md-whiteframe-1dp" md-colors="{background: 'white'}">
     <div layout="row" layout-padding>
+      <div><div style="width: 56px;"></div></div>
       <div flex="20" class="md-caption">Report Name</div>
       <div flex="20" class="md-caption text-right">Reported Date</div>
       <div flex="20" class="md-caption text-right">Modified Date</div>
@@ -13,6 +14,7 @@
 <div>
   <md-toolbar class="md-whiteframe-1dp" ng-repeat="report in reports" md-colors="{background: 'white'}">
     <div layout="row" layout-padding>
+      <osr-status-icon status="report.status"></osr-status-icon>
       <div flex="20" class="md-subhead">
         <div>{{report.name}}</div>
         <small>#{{report.outbreakNumber}}</small>
@@ -54,6 +56,19 @@
             <md-button ui-sref="reports.edit.print.preview({reportId: report._id})">
               <md-icon>print</md-icon>
               Print
+            </md-button>
+          </md-menu-item>
+          <md-divider></md-divider>
+          <md-menu-item ng-if="report.status === 'IN_PROGRESS'">
+            <md-button ui-sref="reports.edit.complete({reportId: report._id})">
+              <md-icon>done</md-icon>
+              Complete
+            </md-button>
+          </md-menu-item>
+          <md-menu-item ng-if="report.status === 'COMPLETE'">
+            <md-button ui-sref="reports.edit.approve({reportId: report._id})">
+              <md-icon>done_all</md-icon>
+              Approve
             </md-button>
           </md-menu-item>
           <md-divider></md-divider>

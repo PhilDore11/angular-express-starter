@@ -61,6 +61,10 @@ angular.module('app.reports')
       return promise($http.put('/api/reports/' + report._id, report), true, successLabel, 'Error Saving Report');
     },
 
+    completeReport: function(report) {
+      return promise($http.put('/api/reports/' + report._id + '/complete', report), true, 'Report Completed', 'Error Saving Report');
+    },
+
     deleteReport: function(reportId) {
       return promise($http.delete('/api/reports/' + reportId), true, 'Report Deleted', 'Error Deleting Report');
     },

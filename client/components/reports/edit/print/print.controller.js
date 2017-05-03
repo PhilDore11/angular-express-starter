@@ -58,15 +58,6 @@ angular.module('app.reports.edit.print', [])
 
   .controller('ReportPrintController', function($scope, $state, report) {
     $scope.report = report;
-
-    $scope.printReport = function() {
-      pdfMake.createPdf({
-        header: 'Outbreak Summary Report',
-        content: [
-          report.name
-        ]}
-      ).download();
-    };
   })
 
   .controller('ReportPrintInfoController', function($scope) {

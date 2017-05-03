@@ -1,0 +1,11 @@
+<div flex>
+  <md-input-container class="md-block" ng-if="!readonly">
+    <label>{{label}}</label>
+    <textarea ng-model="form[prop]" md-maxlength="150" rows="5" md-select-on-focus />
+  </md-input-container>
+
+  <div ng-if="readonly" layout="row" layout-padding>
+    <div flex="40" class="text-right" md-colors="{color:'grey'}">{{label}}</div>
+    <div flex><pre>{{form[prop]}}</pre></div>
+  </div>
+</div>

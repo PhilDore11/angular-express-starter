@@ -5,6 +5,12 @@ var _ = require('lodash');
 var express = require('express');
 var router = express.Router();
 
+global.REPORT_STATUSES = {
+  progress: 'IN_PROGRESS',
+  complete: 'COMPLETE',
+  approved: 'APPROVED'
+};
+
 var Report = require('./models/report.js');
 
 function validationError(res, err) {
@@ -43,6 +49,7 @@ router.get('/:id', function(req, res) {
 */
 router.post('/', function(req, res) {
   var reportData = req.body;
+  reportData.status = global.REPORT_STATUSES.progress;
   reportData.createdDate = new Date();
   reportData.modifiedDate = new Date();
 
@@ -67,6 +74,31 @@ router.put('/:id', function(req, res) {
     } else {
       report = _.assign(report, req.body);
 
+      report.modifiedDate = new Date();
+
+      report.save(function(err, report) {
+        if (err) {
+          validationError(res, err);
+        } else {
+          res.json(report);
+        }
+      });
+    }
+  });
+});
+
+
+/*
+* Update a report
+*/
+router.put('/:id/complete', function(req, res) {
+  Report.findById(req.params.id, function(err, report) {
+    if (err) {
+      validationError(res, err);
+    } else {
+      report = _.assign(report, req.body);
+
+      report.status = global.REPORT_STATUSES.complete;
       report.modifiedDate = new Date();
 
       report.save(function(err, report) {

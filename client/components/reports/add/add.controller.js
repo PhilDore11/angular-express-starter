@@ -42,8 +42,8 @@ angular.module('app.reports.add', [])
     $scope.reportSuccessLabel = 'Report has been created';
 
     $scope.onSave = function() {
-      ReportsService.addReport($scope.report, $scope.reportSuccessLabel).then(function() {
-        $state.go('.success');
+      ReportsService.addReport($scope.report, $scope.reportSuccessLabel).then(function(report) {
+        $state.go('reports.edit.success', {reportId: report._id});
       });
     };
   });
