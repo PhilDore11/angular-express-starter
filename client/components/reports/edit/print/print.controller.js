@@ -40,6 +40,10 @@ angular.module('app.reports.edit.print', [])
     $stateProvider.state('reports.edit.print.preview', {
       url: '/preview',
       views: {
+        outbreakInfo: {
+          templateUrl: 'components/reports/form/outbreakInfo.tpl.html',
+          controller: 'ReportPrintInfoController'
+        },
         facilityInfo: {
           templateUrl: 'components/reports/form/facilityInfo.tpl.html',
           controller: 'ReportPrintInfoController'
@@ -51,7 +55,11 @@ angular.module('app.reports.edit.print', [])
         epiCurve: {
           templateUrl: 'components/reports/edit/epiCurve/epiCurve.tpl.html',
           controller: 'ReportEditEpiCurveController',
-        }
+        },
+        comments: {
+          templateUrl: 'components/reports/form/comments.tpl.html',
+          controller: 'ReportPrintInfoController'
+        },
       }
     });
   })

@@ -11,8 +11,13 @@ var reportSchema = new mongoose.Schema({
     type: String,
     enum: _.values(global.REPORT_STATUSES)
   },
-  completedDate: Date,
 
+  // COMPLETE
+  completedDate: Date,
+  successes: String,
+  improvements: String,
+
+  // APPROVED
   approvalDate: Date,
   approvedBy: Date,
 

@@ -15,12 +15,13 @@
 
     <!-- Directives -->
     <link href="directives/widgets/largeButton.css" rel="stylesheet">
+    <link href="directives/widgets/printPage.css" rel="stylesheet">
   </head>
 
   <body layout="column">
     <osr-navbar></osr-navbar>
     <md-content flex ui-view></md-content>
-    <div layout="row" layout-margin>
+    <div layout="row" layout-margin class="hide-print">
       <div flex></div>
       <md-button class="md-fab md-primary md-hue-2" ui-sref="reports.add" aria-label="Create New Report">
         <md-icon>add</md-icon>
@@ -55,6 +56,7 @@
     <script src="directives/widgets/navbar.directive.js"></script>
     <script src="directives/widgets/largeButton.directive.js"></script>
     <script src="directives/widgets/statusIcon.directive.js"></script>
+    <script src="directives/widgets/printPage.directive.js"></script>
 
     <!-- Reports -->
     <script src="components/reports/reports.controller.js"></script>

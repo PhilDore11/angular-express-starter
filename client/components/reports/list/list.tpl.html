@@ -66,6 +66,12 @@
             </md-button>
           </md-menu-item>
           <md-menu-item ng-if="report.status === 'COMPLETE'">
+            <md-button ui-sref="reports.edit.complete({reportId: report._id})">
+              <md-icon>comment</md-icon>
+              Add Comments
+            </md-button>
+          </md-menu-item>
+          <md-menu-item ng-if="report.status === 'COMPLETE'">
             <md-button ui-sref="reports.edit.approve({reportId: report._id})">
               <md-icon>done_all</md-icon>
               Approve

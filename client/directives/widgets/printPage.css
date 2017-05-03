@@ -1,0 +1,12 @@
+.print-page	{
+  display: block;
+  page-break-after: always;
+}
+
+.print-header, .print-footer {
+  width: 100%;
+}
+.print-footer {
+  position: fixed;
+  bottom: 0px;
+}

@@ -4,6 +4,7 @@ angular.module('app')
 
   .directive('osrFormSection', function() {
     return {
+      replace: true,
       transclude: true,
       scope: {
         icon: '@',
