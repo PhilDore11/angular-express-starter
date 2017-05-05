@@ -1,27 +1,16 @@
 'use strict';
 
-angular.module('app.reports.edit.success', [])
+angular.module('app.reports.report.success', [])
 
   .config(function($stateProvider) {
-    $stateProvider.state('reports.edit.success', {
+    $stateProvider.state('reports.report.success', {
       url: '/success',
-      templateUrl: 'components/reports/edit/success/success.tpl.html',
+      templateUrl: 'components/reports/report/success/success.tpl.html',
       controller: 'ReportEditSuccessController',
       resolve: {
         report: function($stateParams, ReportsService) {
           return ReportsService.getReport($stateParams.reportId);
         }
-      },
-      data: {
-        title: {
-          label: 'Report Saved',
-          showReportName: true
-        },
-        actions: [{
-          icon: 'list',
-          state: 'reports.list',
-          label: 'Back to List'
-        }]
       }
     });
   })

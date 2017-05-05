@@ -1,35 +1,16 @@
 'use strict';
 
-angular.module('app.reports.edit.epiCurve', [])
+angular.module('app.reports.report.epiCurve', [])
 
   .config(function($stateProvider) {
-    $stateProvider.state('reports.edit.epiCurve', {
+    $stateProvider.state('reports.report.epiCurve', {
       url: '/epiCurve',
-      templateUrl: 'components/reports/edit/epiCurve/epiCurve.tpl.html',
+      templateUrl: 'components/reports/report/epiCurve/epiCurve.tpl.html',
       controller: 'ReportEditEpiCurveController',
       resolve: {
         report: function($stateParams, ReportsService) {
           return ReportsService.getReport($stateParams.reportId);
         }
-      },
-      data: {
-        title: {
-          label: 'Epi Curve',
-          showReportName: true
-        },
-        actions: [{
-          icon: 'list',
-          state: 'reports.list',
-          label: 'Back to List'
-        }, {
-          icon: 'edit',
-          state: 'reports.edit.outbreakInfo',
-          label: 'Report Information'
-        }, {
-          icon: 'border_all',
-          state: 'reports.edit.dataEntry',
-          label: 'Data Entry'
-        }]
       }
     });
   })

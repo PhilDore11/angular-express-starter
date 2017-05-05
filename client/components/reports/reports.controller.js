@@ -3,7 +3,7 @@
 angular.module('app.reports', [
   'app.reports.list',
   'app.reports.add',
-  'app.reports.edit'
+  'app.reports.report'
 ])
 
   .config(function($stateProvider) {

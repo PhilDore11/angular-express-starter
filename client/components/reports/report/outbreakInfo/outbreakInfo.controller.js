@@ -1,9 +1,9 @@
 'use strict';
 
-angular.module('app.reports.edit.outbreakInfo', [])
+angular.module('app.reports.report.outbreakInfo', [])
 
   .config(function($stateProvider) {
-    $stateProvider.state('reports.edit.outbreakInfo', {
+    $stateProvider.state('reports.report.outbreakInfo', {
       url: '/outbreakInfo',
       templateUrl: 'components/reports/form/form.tpl.html',
       controller: 'ReportEditOutbreakInfoController',
@@ -20,25 +20,6 @@ angular.module('app.reports.edit.outbreakInfo', [])
         outbreakAgents: function(LookupsService) {
           return LookupsService.getOutbreakAgents();
         }
-      },
-      data: {
-        title: {
-          label: 'Report Information',
-          showReportName: true
-        },
-        actions: [{
-          icon: 'list',
-          state: 'reports.list',
-          label: 'Back to List'
-        }, {
-          icon: 'border_all',
-          state: 'reports.edit.dataEntry',
-          label: 'Data Entry'
-        }, {
-          icon: 'show_chart',
-          state: 'reports.edit.epiCurve',
-          label: 'Epi Curve'
-        }]
       }
     });
   })

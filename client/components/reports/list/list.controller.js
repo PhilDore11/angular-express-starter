@@ -11,16 +11,6 @@ angular.module('app.reports.list', [])
         reports: function(ReportsService) {
           return ReportsService.getReports();
         }
-      },
-      data: {
-        title: {
-          label: 'Report List'
-        },
-        actions: [{
-          icon: 'home',
-          state: 'home',
-          label: 'Back to Home'
-        }]
       }
     });
   })

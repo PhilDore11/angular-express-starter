@@ -8,8 +8,14 @@ angular.module('app')
       transclude: true,
       scope: {
         icon: '@',
-        title: '@'
+        title: '@',
+        onEditFunc: '&onEdit'
       },
-      templateUrl: 'directives/form/formSection.tpl.html'
+      templateUrl: 'directives/form/formSection.tpl.html',
+      controller: function($scope) {
+        $scope.onEdit = function(event) {
+          return $scope.onEditFunc()(event);
+        };
+      }
     };
   });

@@ -3,19 +3,24 @@
     <p class="md-display-1">Outbreak Summary Report Manager</p>
   </div>
 </md-toolbar>
-<md-toolbar ng-if="stateData" class="hide-print md-whiteframe-1dp" md-colors="{background: 'white'}">
-  <div layout="row" layout-padding layout-align="start center">
-    <div ng-if="stateData.title.showReportName">
-      {{report.name}} - #{{report.outbreakNumber}}<br/>
-      <small md-colors="{color: 'black'}">{{stateData.title.label}}</small>
+<md-toolbar class="hide-print md-whiteframe-1dp" md-colors="{background: 'white'}">
+  <div class="md-toolbar-tools">
+    <osr-status-icon status="report.status"></osr-status-icon>
+    <div ng-if="report">
+      {{report.name}} - #{{report.outbreakNumber}}
     </div>
-    <div ng-if="!stateData.title.showReportName">
+    <div ng-if="!report">
       {{stateData.title.label}}
     </div>
     <div flex></div>
-    <a class="md-button" ng-repeat="action in stateData.actions" ng-click="goToState(action.state, stateParams)">
-      <md-icon md-colors="{color: 'black'}">{{action.icon}}</md-icon>
-      {{action.label}}
-    </a>
+    <div layout="row">
+      <div ng-repeat="action in actions" layout="row">
+        <md-divider ng-if="action.divider"></md-divider>
+        <a ng-if="!action.divider" class="md-button md-icon-button" ui-sref="{{action.state}}(stateParams)" ui-sref-active="md-raised">
+          <md-icon md-colors="{color: 'black'}">{{action.icon}}</md-icon>
+          <md-tooltip md-direction="bottom">{{action.label}}</md-tooltip>
+        </a>
+      </div>
+    </div>
   </div>
 </md-toolbar>

@@ -17,16 +17,6 @@ angular.module('app.reports.add', [])
         outbreakAgents: function(LookupsService) {
           return LookupsService.getOutbreakAgents();
         }
-      },
-      data: {
-        title: {
-          label: 'Add Report'
-        },
-        actions: [{
-          icon: 'list',
-          state: 'reports.list',
-          label: 'Back to List'
-        }]
       }
     });
   })
@@ -43,7 +33,7 @@ angular.module('app.reports.add', [])
 
     $scope.onSave = function() {
       ReportsService.addReport($scope.report, $scope.reportSuccessLabel).then(function(report) {
-        $state.go('reports.edit.success', {reportId: report._id});
+        $state.go('reports.report.success', {reportId: report._id});
       });
     };
   });

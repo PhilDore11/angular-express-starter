@@ -1,27 +1,16 @@
 'use strict';
 
-angular.module('app.reports.edit.complete', [])
+angular.module('app.reports.report.complete', [])
 
   .config(function($stateProvider) {
-    $stateProvider.state('reports.edit.complete', {
+    $stateProvider.state('reports.report.complete', {
       url: '/complete',
-      templateUrl: 'components/reports/edit/complete/complete.tpl.html',
+      templateUrl: 'components/reports/report/complete/complete.tpl.html',
       controller: 'ReportCompleteController',
       resolve: {
         report: function($stateParams, ReportsService) {
           return ReportsService.getReport($stateParams.reportId);
         }
-      },
-      data: {
-        title: {
-          label: 'Complete Report',
-          showReportName: true
-        },
-        actions: [{
-          icon: 'list',
-          state: 'reports.list',
-          label: 'Back to List'
-        }]
       }
     });
   })

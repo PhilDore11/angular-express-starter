@@ -28,64 +28,16 @@
         <small>{{report.modifiedDate | date:'shortTime'}}</small>
       </div>
       <div flex></div>
-      <md-menu>
-        <md-button class="md-icon-button" ng-click="$mdMenu.open($event)">
-          <md-icon md-colors="{color: 'black'}">more_vert</md-icon>
-        </md-button>
-        <md-menu-content>
-          <md-menu-item>
-            <md-button ui-sref="reports.edit.outbreakInfo({reportId: report._id})">
-              <md-icon>edit</md-icon>
-              Report Information
-            </md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ui-sref="reports.edit.dataEntry({reportId: report._id})">
-              <md-icon>border_all</md-icon>
-              Data Entry
-            </md-button>
-          </md-menu-item>
-          <md-menu-item>
-            <md-button ui-sref="reports.edit.epiCurve({reportId: report._id})">
-              <md-icon>show_chart</md-icon>
-              Epi Curve
-            </md-button>
-          </md-menu-item>
-          <md-divider></md-divider>
-          <md-menu-item>
-            <md-button ui-sref="reports.edit.print.preview({reportId: report._id})">
-              <md-icon>print</md-icon>
-              Print
-            </md-button>
-          </md-menu-item>
-          <md-divider></md-divider>
-          <md-menu-item ng-if="report.status === 'IN_PROGRESS'">
-            <md-button ui-sref="reports.edit.complete({reportId: report._id})">
-              <md-icon>done</md-icon>
-              Complete
-            </md-button>
-          </md-menu-item>
-          <md-menu-item ng-if="report.status === 'COMPLETE'">
-            <md-button ui-sref="reports.edit.complete({reportId: report._id})">
-              <md-icon>comment</md-icon>
-              Add Comments
-            </md-button>
-          </md-menu-item>
-          <md-menu-item ng-if="report.status === 'COMPLETE'">
-            <md-button ui-sref="reports.edit.approve({reportId: report._id})">
-              <md-icon>done_all</md-icon>
-              Approve
-            </md-button>
-          </md-menu-item>
-          <md-divider></md-divider>
-          <md-menu-item>
-            <md-button ng-click="deleteReport(report._id)">
-              <md-icon>delete</md-icon>
-              Delete
-            </md-button>
-          </md-menu-item>
-        </md-menu-content>
-      </md-menu>
+      <div>
+        <a class="md-button md-fab md-mini md-primary md-hue-2" ui-sref="reports.report.view({reportId: report._id})">
+          <md-icon>visibility</md-icon>
+          <md-tooltip md-direction="bottom">View Report</md-tooltip>
+        </a>
+        <a class="md-button md-fab md-mini md-warn" ui-sref="reports.report.view({reportId: report._id})">
+          <md-icon>delete</md-icon>
+          <md-tooltip md-direction="bottom">Delete Report</md-tooltip>
+        </a>
+      </div>
     </div>
     <md-divider ng-if="!$last"></md-divider>
   </md-toolbar>
