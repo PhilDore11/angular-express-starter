@@ -10,7 +10,7 @@ angular.module('app')
     };
   })
 
-  .controller('NavbarController', function($rootScope, $scope, $state, ReportsService) {
+  .controller('NavbarController', function($rootScope, $scope, $state, $window, ReportsService) {
 
     function isReportComplete(report) {
       return _.isEqual(report.status, 'COMPLETE');
@@ -36,7 +36,9 @@ angular.module('app')
           divider: true
         }, {
           icon: 'print',
-          state: 'reports.report.print.preview',
+          click: function() {
+            $window.print();
+          },
           label: 'Print Report'
         }];
 
