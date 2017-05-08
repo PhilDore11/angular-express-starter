@@ -8,7 +8,6 @@ angular.module('app', [
   'ui.router',
   'satellizer',
   'mdSteppers',
-  'angularCharts',
 
   'app.home',
   'app.reports'

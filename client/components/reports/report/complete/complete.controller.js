@@ -13,14 +13,24 @@ angular.module('app.reports.report.complete', [])
         }
       }
     });
+
+    $stateProvider.state('reports.report.complete.edit', {
+      url: '/report',
+      views: {
+        comments: {
+          templateUrl: 'components/reports/report/comments/comments.tpl.html',
+          controller: 'ReportEditCommentsController'
+        }
+      }
+    });
   })
 
-  .controller('ReportCompleteController', function($scope, $state, ReportsService, report) {
-    $scope.report = report;
+  .controller('ReportCompleteController', function($scope, $state, report, ReportsService) {
+    $scope.report = angular.copy(report);
 
-    $scope.onComplete = function() {
-      ReportsService.completeReport($scope.report).then(function() {
-        $state.go('^.success');
+    $scope.onSave = function() {
+      return ReportsService.completeReport($scope.report).then(function() {
+        $state.go('reports.report.view', {reportId: report._id});
       });
     };
   });

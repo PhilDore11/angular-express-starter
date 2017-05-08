@@ -27,7 +27,6 @@
     "md-steppers": "^0.3.4",
     "material-steppers": "^2.0.0",
     "lodash": "^4.17.4",
-    "angular-charts": "^0.2.7",
     "chart.js": "^2.5.0"
   }
 }

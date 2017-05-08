@@ -16,17 +16,13 @@
     <!-- Directives -->
     <link href="directives/widgets/largeButton.css" rel="stylesheet">
     <link href="directives/widgets/printPage.css" rel="stylesheet">
+    <link href="directives/widgets/footer.css" rel="stylesheet">
   </head>
 
   <body layout="column">
     <osr-navbar></osr-navbar>
     <md-content flex ui-view></md-content>
-    <div layout="row" layout-margin class="hide-print">
-      <div flex></div>
-      <md-button class="md-fab md-primary md-hue-2" ui-sref="reports.add" aria-label="Create New Report">
-        <md-icon>add</md-icon>
-      </md-button>
-    </div>
+    <osr-footer></osr-footer>
 
     <!-- Third-party Libraries -->
     <script src="bower_components/lodash/dist/lodash.js"></script>
@@ -41,7 +37,6 @@
     <script src="bower_components/satellizer/satellizer.js"></script>
     <script src="bower_components/material-steppers/dist/material-steppers.js"></script>
     <script src="bower_components/chart.js/dist/Chart.js"></script>
-    <script src="bower_components/angular-charts/dist/angular-charts.js"></script>
 
     <!-- Application Code -->
     <script src="app.js"></script>
@@ -55,6 +50,7 @@
     <script src="directives/form/formSection.directive.js"></script>
     <script src="directives/form/formDialog.directive.js"></script>
     <script src="directives/widgets/navbar.directive.js"></script>
+    <script src="directives/widgets/footer.directive.js"></script>
     <script src="directives/widgets/largeButton.directive.js"></script>
     <script src="directives/widgets/statusIcon.directive.js"></script>
     <script src="directives/widgets/printPage.directive.js"></script>
@@ -65,10 +61,12 @@
     <script src="components/reports/add/add.controller.js"></script>
     <script src="components/reports/report/report.controller.js"></script>
     <script src="components/reports/report/outbreakInfo/outbreakInfo.controller.js"></script>
+    <script src="components/reports/report/facilityInfo/facilityInfo.controller.js"></script>
+    <script src="components/reports/report/infectionInfo/infectionInfo.controller.js"></script>
     <script src="components/reports/report/dataEntry/dataEntry.controller.js"></script>
     <script src="components/reports/report/epiCurve/epiCurve.controller.js"></script>
+    <script src="components/reports/report/comments/comments.controller.js"></script>
     <script src="components/reports/report/complete/complete.controller.js"></script>
-    <script src="components/reports/report/success/success.controller.js"></script>
 
     <!-- Services -->
     <script src="components/reports/reports.service.js"></script>

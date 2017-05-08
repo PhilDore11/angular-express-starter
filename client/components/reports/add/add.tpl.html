@@ -1,0 +1,55 @@
+<md-stepper id="reportStepper"
+  md-alternative="true"
+  md-linear="false">
+  <md-step-actions>
+    <osr-form-actions stepper-id="reportStepper" save-func="onSave", save-label="saveButtonLabel"></osr-form-actions>
+  </md-step-actions>
+  <md-step md-label="Outbreak Information">
+    <osr-form-section
+      icon="assignment"
+      title="Outbreak Information"
+      hide-edit="true">
+      <div ui-view="outbreakInfo"></div>
+    </osr-form-section>
+  </md-step>
+  <md-step md-label="Facility Information">
+    <osr-form-section
+      icon="domain"
+      title="Facility Information"
+      hide-edit="true">
+      <div ui-view="facilityInfo"></div>
+    </osr-form-section>
+  </md-step>
+  <md-step md-label="Infection Information">
+    <osr-form-section
+      icon="bubble_chart"
+      title="Infection Information"
+      hide-edit="false">
+      <div ui-view="infectionInfo"></div>
+    </osr-form-section>
+  </md-step>
+  <md-step md-label="Review & Save">
+    <osr-form-section
+      icon="assignment"
+      title="Outbreak Information"
+      hide-edit="true">
+      <div ui-view="infectionInfo" ng-init="readonly = true"></div>
+    </osr-form-section>
+
+    <div layout="row">
+      <osr-form-section flex="50"
+        icon="domain"
+        title="Facility Information"
+        hide-edit="true">
+        <div ui-view="facilityInfo" ng-init="readonly = true"></div>
+      </osr-form-section>
+
+      <osr-form-section flex="50"
+        icon="bubble_chart"
+        title="Infection Information"
+        hide-edit="true">
+        <div ui-view="infectionInfo" ng-init="readonly = true"></div>
+      </osr-form-section>
+    </div>
+  </md-step>
+</md-stepper>

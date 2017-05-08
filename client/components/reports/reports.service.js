@@ -53,7 +53,6 @@ angular.module('app.reports')
     },
 
     addReport: function(report, successLabel) {
-      console.log('report', report);
       return promise($http.post('/api/reports/', report), true, successLabel, 'Error Creating Report');
     },
 

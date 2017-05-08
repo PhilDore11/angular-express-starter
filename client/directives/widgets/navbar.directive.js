@@ -11,41 +11,23 @@ angular.module('app')
   })
 
   .controller('NavbarController', function($rootScope, $scope, $state, ReportsService) {
-    function isReportComplete() {
-      return _.isEqual(_.get($scope, 'report.status'), 'COMPLETE');
+
+    function isReportComplete(report) {
+      return _.isEqual(report.status, 'COMPLETE');
     }
 
     function getNavbarActions(report) {
-      var editActions = [{
-          divider: true
-        }, {
-          icon: 'edit',
-          state: 'reports.report.outbreakInfo',
-          label: 'Report Information'
-        }, {
-          icon: 'border_all',
-          state: 'reports.report.dataEntry',
-          label: 'Data Entry'
-        }, {
-          icon: 'show_chart',
-          state: 'reports.report.epiCurve',
-          label: 'Epi Curve'
-        }];
 
       var completionActions = [{
           divider: true
         }, {
           icon: 'done',
-          state: 'reports.report.complete',
+          state: 'reports.report.complete.edit',
           label: 'Complete Report'
       }];
 
       var approvalActions = [{
           divider: true
-        }, {
-          icon: 'comment',
-          state: 'reports.report.complete',
-          label: 'Add Comments'
         }, {
           icon: 'done_all',
           state: 'reports.report.approve',
@@ -72,19 +54,29 @@ angular.module('app')
         });
       }
 
-      if (_.isObject(report) && !isReportComplete()) {
-        actions = actions.concat(editActions);
-        actions = actions.concat(completionActions);
+      if (_.isObject(report)) {
+        actions = actions.concat({
+          divider: true
+        }, {
+          icon: 'visibility',
+          state: 'reports.report.view',
+          label: 'View Report'
+        });
       }
-      if (isReportComplete()) {
-        actions = actions.concat(approvalActions);
+
+      if (_.isObject(report)) {
+        if (!isReportComplete(report)) {
+          actions = actions.concat(completionActions);
+        }
+        else {
+          actions = actions.concat(approvalActions);
+        }
       }
 
       return actions;
     }
 
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-      $scope.stateData = (toState) ? toState.data : {};
       $scope.stateParams = toParams;
 
       if (toParams.reportId) {
@@ -92,10 +84,9 @@ angular.module('app')
           $scope.report = report;
           $scope.actions = getNavbarActions(report);
         });
+      } else {
+        delete $scope.report;
+        $scope.actions = getNavbarActions();
       }
     });
-
-    $scope.goToState = function(state, stateParams) {
-      $state.go(state, stateParams);
-    };
   });

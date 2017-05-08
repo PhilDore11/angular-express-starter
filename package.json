@@ -19,5 +19,21 @@
     "start": "node server/server.js"
   },
   "main": "server/server.js",
-  "devDependencies": {}
+  "devDependencies": {},
+  "nexe": {
+  	"input": "./server/server",
+  	"output": "nexe^$",
+  	"temp": "tmp",
+  	"browserify": {
+  		"requires": [],
+  		"excludes": [],
+  		"paths": []
+  	},
+  	"runtime": {
+  		"framework": "node",
+  		"version": "7.4.0",
+  		"js-flags": "--use_strict",
+  		"ignoreFlags": true
+  	}
+  }
 }

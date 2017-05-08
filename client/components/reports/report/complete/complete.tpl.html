@@ -1,14 +1,14 @@
 <div layout="row">
   <div flex></div>
-  <md-button class="md-raised md-primary md-hue2" ng-click="onComplete()">
-    <md-icon>done</md-icon>Complete Report
+  <md-button class="md-primary md-hue-2 md-raised" ng-click="onSave()">
+    <md-icon>done</md-icon>
+    Complete Report
   </md-button>
 </div>
 
-<md-content>
-  <osr-form-section
-    icon="comment"
-    title="Comments">
-    <ng-include src="'components/reports/form/comments.tpl.html'">
-  </osr-form-section>
-</md-content>
+<osr-form-section
+  icon="comment"
+  title="Comments"
+  hide-edit="true">
+  <div ui-view="comments"></div>
+</osr-form-section>

@@ -2,22 +2,7 @@
 
 angular.module('app.reports.report.dataEntry', [])
 
-  .config(function($stateProvider) {
-    $stateProvider.state('reports.report.dataEntry', {
-      url: '/dataEntry',
-      templateUrl: 'components/reports/report/dataEntry/dataEntry.tpl.html',
-      controller: 'ReportEditDataEntryController',
-      resolve: {
-        report: function($stateParams, ReportsService) {
-          return ReportsService.getReport($stateParams.reportId);
-        }
-      }
-    });
-  })
-
-  .controller('ReportEditDataEntryController', function($scope, $mdEditDialog, report, ReportsService) {
-    $scope.report = report;
-
+  .controller('ReportEditDataEntryController', function($scope, $mdEditDialog, ReportsService) {
     // Data
     $scope.addDataRow = function() {
       if (_.isEmpty($scope.report.data)) {
@@ -54,6 +39,6 @@ angular.module('app.reports.report.dataEntry', [])
 
     // Save
     $scope.onSave = function() {
-      ReportsService.saveReport($scope.report, 'Report Data Saved');
+      return ReportsService.saveReport($scope.report, 'Report Data Saved');
     };
   });

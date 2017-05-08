@@ -3,14 +3,11 @@
     <p class="md-display-1">Outbreak Summary Report Manager</p>
   </div>
 </md-toolbar>
-<md-toolbar class="hide-print md-whiteframe-1dp" md-colors="{background: 'white'}">
+<md-toolbar ng- class="hide-print md-whiteframe-1dp" md-colors="{background: 'white'}">
   <div class="md-toolbar-tools">
     <osr-status-icon status="report.status"></osr-status-icon>
     <div ng-if="report">
       {{report.name}} - #{{report.outbreakNumber}}
-    </div>
-    <div ng-if="!report">
-      {{stateData.title.label}}
     </div>
     <div flex></div>
     <div layout="row">

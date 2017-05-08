@@ -1,24 +1,28 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2>{{title}}</h2>
+<form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{title}}</h2>
+      <div flex></div>
+      <a class="md-button md-icon-button" ng-click="cancel()">
+        <md-icon>close</md-icon>
+        <md-tooltip md-direction="bottom">Close</md-tooltip>
+      </a>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div ng-transclude></div>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions layout="row">
     <div flex></div>
-    <a class="md-button md-icon-button" ng-click="cancel()">
-      <md-icon>close</md-icon>
-      <md-tooltip md-direction="bottom">Close</md-tooltip>
-    </a>
-  </div>
-</md-toolbar>
-
-<md-dialog-content>
-  <div class="md-dialog-content" ng-transclude></div>
-</md-dialog-content>
-
-<md-dialog-actions layout="row">
-  <div flex></div>
-  <md-button ng-click="cancel()">
-   Cancel
-  </md-button>
-  <md-button class="md-primary" ng-click="onSave()">
-    Save
-  </md-button>
-</md-dialog-actions>
+    <md-button ng-click="cancel()">
+     Cancel
+    </md-button>
+    <md-button class="md-primary" ng-click="onSave()">
+      Save
+    </md-button>
+  </md-dialog-actions>
+</form>

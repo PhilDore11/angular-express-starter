@@ -9,6 +9,7 @@ angular.module('app')
       scope: {
         icon: '@',
         title: '@',
+        hideEdit: '=',
         onEditFunc: '&onEdit'
       },
       templateUrl: 'directives/form/formSection.tpl.html',

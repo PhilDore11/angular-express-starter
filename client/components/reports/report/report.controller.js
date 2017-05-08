@@ -2,10 +2,12 @@
 
 angular.module('app.reports.report', [
   'app.reports.report.outbreakInfo',
+  'app.reports.report.facilityInfo',
+  'app.reports.report.infectionInfo',
   'app.reports.report.dataEntry',
   'app.reports.report.epiCurve',
-  'app.reports.report.complete',
-  'app.reports.report.success'
+  'app.reports.report.comments',
+  'app.reports.report.complete'
 ])
 
   .config(function($stateProvider) {
@@ -24,15 +26,15 @@ angular.module('app.reports.report', [
       url: '/view',
       views: {
         outbreakInfo: {
-          templateUrl: 'components/reports/form/outbreakInfo.tpl.html',
+          templateUrl: 'components/reports/report/outbreakInfo/outbreakInfo.tpl.html',
           controller: 'ReportViewInfoController'
         },
         facilityInfo: {
-          templateUrl: 'components/reports/form/facilityInfo.tpl.html',
+          templateUrl: 'components/reports/report/facilityInfo/facilityInfo.tpl.html',
           controller: 'ReportViewInfoController'
         },
         infectionInfo: {
-          templateUrl: 'components/reports/form/infectionInfo.tpl.html',
+          templateUrl: 'components/reports/report/infectionInfo/infectionInfo.tpl.html',
           controller: 'ReportViewInfoController'
         },
         epiCurve: {
@@ -40,7 +42,7 @@ angular.module('app.reports.report', [
           controller: 'ReportEditEpiCurveController',
         },
         comments: {
-          templateUrl: 'components/reports/form/comments.tpl.html',
+          templateUrl: 'components/reports/report/comments/comments.tpl.html',
           controller: 'ReportViewInfoController'
         },
       }
@@ -48,54 +50,71 @@ angular.module('app.reports.report', [
   })
 
   .controller('ReportViewController', function($scope, $state, $mdDialog, report) {
-    $scope.report = report;
+    $scope.report = angular.copy(report);
 
-    function showEditDialog(ev, templateUrl) {
+    function showEditDialog(ev, templateUrl, controller) {
       $mdDialog.show({
-        controller: 'ReportModalController',
+        controller: controller,
         templateUrl: templateUrl,
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose:true,
+        clickOutsideToClose: true,
         fullscreen: true,
+        scope: $scope,
+        preserveScope: true,
         resolve: {
-          report: function($stateParams, ReportsService) {
-            return ReportsService.getReport($stateParams.reportId);
+          facilityTypes: function(LookupsService) {
+            return LookupsService.getFacilityTypes();
+          },
+          outbreakTypes: function(LookupsService) {
+            return LookupsService.getOutbreakTypes();
+          },
+          outbreakAgents: function(LookupsService) {
+            return LookupsService.getOutbreakAgents();
           }
         }
+      }).then(function() {
+        $scope.report = report; // Reset Report
       });
     }
 
     $scope.editOutbreakInfo = function(ev) {
-      showEditDialog(ev, 'components/reports/form/outbreakInfoModal.tpl.html');
+      showEditDialog(
+        ev,
+        'components/reports/report/outbreakInfo/outbreakInfoModal.tpl.html',
+        'ReportEditOutbreakInfoController'
+      );
     };
     $scope.editFacilityInfo = function(ev) {
-      showEditDialog(ev, 'components/reports/form/facilityInfoModal.tpl.html');
+      showEditDialog(
+        ev,
+        'components/reports/report/facilityInfo/facilityInfoModal.tpl.html',
+        'ReportEditFacilityInfoController'
+      );
     };
     $scope.editInfectionInfo = function(ev) {
-      showEditDialog(ev, 'components/reports/form/infectionInfoModal.tpl.html');
+      showEditDialog(
+        ev,
+        'components/reports/report/infectionInfo/infectionInfoModal.tpl.html',
+        'ReportEditInfectionInfoController'
+      );
+    };
+    $scope.editEpiCurve = function(ev) {
+      showEditDialog(
+        ev,
+        'components/reports/report/dataEntry/dataEntryModal.tpl.html',
+        'ReportEditDataEntryController'
+      );
     };
     $scope.editComments = function(ev) {
-      showEditDialog(ev, 'components/reports/form/commentsModal.tpl.html');
+      showEditDialog(
+        ev,
+        'components/reports/report/comments/commentsModal.tpl.html',
+        'ReportEditCommentsController'
+      );
     };
   })
 
   .controller('ReportViewInfoController', function($scope) {
     $scope.readonly = true;
-  })
-
-  .controller('ReportModalController', function($scope, $mdDialog, report) {
-    $scope.report = report;
-
-    $scope.hide = function() {
-      $mdDialog.hide();
-    };
-
-    $scope.cancel = function() {
-      $mdDialog.cancel();
-    };
-
-    $scope.onSave = function() {
-      console.log('Saving...');
-    };
   });

@@ -2,21 +2,7 @@
 
 angular.module('app.reports.report.epiCurve', [])
 
-  .config(function($stateProvider) {
-    $stateProvider.state('reports.report.epiCurve', {
-      url: '/epiCurve',
-      templateUrl: 'components/reports/report/epiCurve/epiCurve.tpl.html',
-      controller: 'ReportEditEpiCurveController',
-      resolve: {
-        report: function($stateParams, ReportsService) {
-          return ReportsService.getReport($stateParams.reportId);
-        }
-      }
-    });
-  })
-
   .controller('ReportEditEpiCurveController', function($scope, $filter, report) {
-    $scope.report = report;
 
     var epiCurveData = {
       labels: [],

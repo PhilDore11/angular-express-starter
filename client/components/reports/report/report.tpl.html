@@ -52,11 +52,16 @@
 
     <osr-print-page>
       <div layout="row">
-        <div ui-view="epiCurve" flex></div>
+        <osr-form-section flex
+          icon="show_charts"
+          title="Epi Curve"
+          on-edit="editEpiCurve">
+          <div ui-view="epiCurve"></div>
+        </osr-form-section>
       </div>
     </osr-print-page>
 
-    <osr-print-page>
+    <osr-print-page ng-if="report.status === 'COMPLETE'">
       <div layout="row">
         <osr-form-section flex
           icon="comment"
@@ -68,3 +73,6 @@
     </osr-print-page>
   </md-content>
 </div>
+
+<md-dialog aria-label="Facility Information">
+  <div ui-view="edit"></

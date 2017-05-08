@@ -1,50 +1,41 @@
-<div flex layout="row">
-  <div flex></div>
-  <md-button class="md-raised md-primary md-hue-2" ng-click="onSave()">
-    <md-icon>save</md-icon>
-    Save Data
-  </md-button>
-</div>
-<md-card>
-  <md-table-container>
-    <table md-table>
-      <thead class="md-whiteframe-1dp" md-colors="::{background: 'white'}" md-head md-order="query.order">
-        <tr md-row>
-          <th md-column><span>Date</span></th>
-          <th md-column md-numeric><span>Resident Cases</span></th>
-          <th md-column md-numeric><span>Staff Cases</span></th>
-          <th md-column width="10"><span></span></th>
-        </tr>
-      </thead>
-      <tbody md-body>
-        <tr md-row md-select="report" md-select-id="name" md-auto-select ng-repeat="entry in report.data | orderBy: query.order">
-          <td md-cell ng-click="editDate($event, entry)">
-            {{entry.date | date}}
-            <md-icon>open_in_new</md-icon>
-          </td>
-          <td md-cell ng-click="editResidentCases($event, entry)">
-            {{entry.residentCases}}
-            <md-icon>open_in_new</md-icon>
-          </td>
-          <td md-cell ng-click="editStaffCases($event, entry)">
-            {{entry.staffCases}}
-            <md-icon>open_in_new</md-icon>
-          </td>
-          <td md-cell>
-            <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow($index)">
-              <md-icon>delete</md-icon>
-              <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <md-divider></md-divider>
-    <div flex layout="row">
-      <md-button flex class="" ng-click="addDataRow()">
-        <md-icon>playlist_add</md-icon>
-        Add Data Row
-      </md-button>
-    </div>
-  </md-table-container>
-</md-card>
+<md-table-container>
+  <table md-table>
+    <thead class="md-whiteframe-1dp" md-colors="::{background: 'white'}" md-head md-order="query.order">
+      <tr md-row>
+        <th md-column><span>Date</span></th>
+        <th md-column md-numeric><span>Resident Cases</span></th>
+        <th md-column md-numeric><span>Staff Cases</span></th>
+        <th md-column width="10"><span></span></th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="report" md-select-id="name" md-auto-select ng-repeat="entry in report.data | orderBy: query.order">
+        <td md-cell ng-click="editDate($event, entry)">
+          {{entry.date | date}}
+          <md-icon>open_in_new</md-icon>
+        </td>
+        <td md-cell ng-click="editResidentCases($event, entry)">
+          {{entry.residentCases}}
+          <md-icon>open_in_new</md-icon>
+        </td>
+        <td md-cell ng-click="editStaffCases($event, entry)">
+          {{entry.staffCases}}
+          <md-icon>open_in_new</md-icon>
+        </td>
+        <td md-cell>
+          <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow($index)">
+            <md-icon>delete</md-icon>
+            <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <md-divider></md-divider>
+  <div flex layout="row">
+    <md-button flex class="" ng-click="addDataRow()">
+      <md-icon>playlist_add</md-icon>
+      Add Data Row
+    </md-button>
+  </div>
+</md-table-container>

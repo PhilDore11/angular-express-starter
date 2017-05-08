@@ -4,11 +4,24 @@ angular.module('app')
 
   .directive('osrFormDialog', function() {
     return {
+      replace: true,
       transclude: true,
-      scope: false,
+      scope: {
+        title: '@',
+        onSaveFunc: '&onSave'
+      },
       templateUrl: 'directives/form/formDialog.tpl.html',
-      link: function(scope, element, attrs) {
-        scope.title = attrs.title;
+      controller: function($scope, $mdDialog) {
+
+        $scope.cancel = function() {
+          $mdDialog.hide();
+        };
+
+        $scope.onSave = function() {
+          $scope.onSaveFunc()().finally(function() {
+            $mdDialog.cancel();
+          });
+        };
       }
      };
   });
