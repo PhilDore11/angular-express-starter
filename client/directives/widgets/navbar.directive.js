@@ -26,22 +26,6 @@ angular.module('app')
           label: 'Complete Report'
       }];
 
-      var approvalActions = [{
-          divider: true
-        }, {
-          icon: 'done_all',
-          state: 'reports.report.approve',
-          label: 'Approve Report'
-        }, {
-          divider: true
-        }, {
-          icon: 'print',
-          click: function() {
-            $window.print();
-          },
-          label: 'Print Report'
-        }];
-
       var actions = [{
         icon: 'home',
         state: 'home',
@@ -70,9 +54,18 @@ angular.module('app')
         if (!isReportComplete(report)) {
           actions = actions.concat(completionActions);
         }
-        else {
-          actions = actions.concat(approvalActions);
-        }
+      }
+
+      if (_.isObject(report)) {
+        actions = actions.concat({
+          divider: true
+        }, {
+          icon: 'print',
+          click: function() {
+            $window.print();
+          },
+          label: 'Print Report'
+        });
       }
 
       return actions;
