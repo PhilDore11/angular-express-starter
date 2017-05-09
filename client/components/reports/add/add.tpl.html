@@ -28,28 +28,4 @@
       <div ui-view="infectionInfo"></div>
     </osr-form-section>
   </md-step>
-  <md-step md-label="Review & Save">
-    <osr-form-section
-      icon="assignment"
-      title="Outbreak Information"
-      hide-edit="true">
-      <div ui-view="infectionInfo" ng-init="readonly = true"></div>
-    </osr-form-section>
-
-    <div layout="row">
-      <osr-form-section flex="50"
-        icon="domain"
-        title="Facility Information"
-        hide-edit="true">
-        <div ui-view="facilityInfo" ng-init="readonly = true"></div>
-      </osr-form-section>
-
-      <osr-form-section flex="50"
-        icon="bubble_chart"
-        title="Infection Information"
-        hide-edit="true">
-        <div ui-view="infectionInfo" ng-init="readonly = true"></div>
-      </osr-form-section>
-    </div>
-  </md-step>
 </md-stepper>
