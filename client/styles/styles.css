@@ -35,3 +35,10 @@ md-toast.md-error-toast-theme> .md-toast-content {
 pre {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+/*
+ * Input
+ */
+md-input-container .md-errors-spacer {
+    min-height: 0;
+}

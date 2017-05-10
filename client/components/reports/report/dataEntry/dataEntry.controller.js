@@ -2,7 +2,7 @@
 
 angular.module('app.reports.report.dataEntry', [])
 
-  .controller('ReportEditDataEntryController', function($scope, $mdEditDialog, ReportsService) {
+  .controller('ReportEditDataEntryController', function($scope, ReportsService) {
     // Data
     $scope.addDataRow = function() {
       if (_.isEmpty($scope.report.data)) {
@@ -12,29 +12,6 @@ angular.module('app.reports.report.dataEntry', [])
     };
     $scope.removeDataRow = function(index) {
       $scope.report.data.splice(index, 1);
-    };
-
-    // Edit Dialogs
-    function editDialog(event, model, param, title, type) {
-      $mdEditDialog.large({
-        targetEvent: event,
-        type: type || 'text',
-        title: title,
-        modelValue: model[param],
-        save: function(input) {
-          model[param] = input.$modelValue;
-        }
-      });
-    }
-
-    $scope.editDate = function(event, model) {
-      editDialog(event, model, 'date', 'Date', 'date');
-    };
-    $scope.editResidentCases = function(event, model) {
-      editDialog(event, model, 'residentCases', 'Resident Cases', 'number');
-    };
-    $scope.editStaffCases = function(event, model) {
-      editDialog(event, model, 'staffCases', 'Staff Cases', 'number');
     };
 
     // Save
