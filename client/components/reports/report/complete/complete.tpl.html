@@ -1,14 +1,15 @@
-<div layout="row">
-  <div flex></div>
-  <md-button class="md-primary md-hue-2 md-raised" ng-click="onSave()">
-    <md-icon>done</md-icon>
-    Complete Report
-  </md-button>
-</div>
+<!-- Primary Investigator -->
+<osr-input-container type="text"
+  label="Primary Investigator"
+  form="report"
+  prop="primaryInvestigator"
+  readonly="readonly">
+</osr-input-container>
 
-<osr-form-section
-  icon="comment"
-  title="Comments"
-  hide-edit="true">
-  <div ui-view="comments"></div>
-</osr-form-section>
+<!-- Date Report Completed -->
+<osr-input-container type="date"
+  label="Date Report Completed"
+  form="report"
+  prop="completedDate"
+  readonly="readonly">
+</osr-input-container>

@@ -13,13 +13,8 @@ var reportSchema = new mongoose.Schema({
   },
 
   // COMPLETE
+  primaryInvestigator: String,
   completedDate: Date,
-  successes: String,
-  improvements: String,
-
-  // APPROVED
-  approvalDate: Date,
-  approvedBy: Date,
 
   name: String,
   outbreakNumber: String,
@@ -41,7 +36,10 @@ var reportSchema = new mongoose.Schema({
     key: String,
     name: String
   },
-  data: Array
+  data: Array,
+
+  successes: String,
+  improvements: String
 });
 
 // the schema is useless so far

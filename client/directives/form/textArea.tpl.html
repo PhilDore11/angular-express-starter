@@ -4,7 +4,7 @@
     <textarea ng-model="form[prop]" md-maxlength="150" rows="5" md-select-on-focus />
   </md-input-container>
 
-  <div ng-if="readonly" layout="row" layout-padding layout-align="start center">
+  <div ng-if="readonly" layout="row" layout-align="start center" layout-padding>
     <div flex="40" class="text-right" md-colors="{color:'grey'}">{{label}}</div>
     <pre>{{form[prop]}}</pre>
   </div>

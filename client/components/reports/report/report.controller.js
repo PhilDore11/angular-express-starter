@@ -45,6 +45,10 @@ angular.module('app.reports.report', [
           templateUrl: 'components/reports/report/comments/comments.tpl.html',
           controller: 'ReportViewInfoController'
         },
+        complete: {
+          templateUrl: 'components/reports/report/complete/complete.tpl.html',
+          controller: 'ReportViewInfoController'
+        },
       }
     });
   })
@@ -111,6 +115,13 @@ angular.module('app.reports.report', [
         ev,
         'components/reports/report/comments/commentsModal.tpl.html',
         'ReportEditCommentsController'
+      );
+    };
+    $scope.editCompletionInfo = function(ev) {
+      showEditDialog(
+        ev,
+        'components/reports/report/complete/completeModal.tpl.html',
+        'ReportEditCompleteController'
       );
     };
   })

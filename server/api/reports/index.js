@@ -6,9 +6,8 @@ var express = require('express');
 var router = express.Router();
 
 global.REPORT_STATUSES = {
-  progress: 'IN_PROGRESS',
-  complete: 'COMPLETE',
-  approved: 'APPROVED'
+  draft: 'DRAFT',
+  complete: 'COMPLETE'
 };
 
 var Report = require('./models/report.js');
@@ -49,7 +48,7 @@ router.get('/:id', function(req, res) {
 */
 router.post('/', function(req, res) {
   var reportData = req.body;
-  reportData.status = global.REPORT_STATUSES.progress;
+  reportData.status = global.REPORT_STATUSES.draft;
   reportData.createdDate = new Date();
   reportData.modifiedDate = new Date();
 

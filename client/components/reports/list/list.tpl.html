@@ -1,8 +1,8 @@
 <div>
   <md-toolbar class="md-whiteframe-1dp" md-colors="{background: 'white'}">
-    <div layout="row" layout-padding>
-      <div><div style="width: 56px;"></div></div>
-      <div flex="20" class="md-caption">Report Name</div>
+    <div flex layout="row" layout-padding layout-align="start center">
+      <div flex="20" class="md-caption">Outbreak Number</div>
+      <div flex="20" class="md-caption">Outbreak Status</div>
       <div flex="20" class="md-caption text-right">Reported Date</div>
       <div flex="20" class="md-caption text-right">Modified Date</div>
       <div flex></div>
@@ -13,11 +13,12 @@
 </div>
 <div>
   <md-toolbar class="md-whiteframe-1dp" ng-repeat="report in reports" md-colors="{background: 'white'}">
-    <div layout="row" layout-padding>
-      <osr-status-icon status="report.status"></osr-status-icon>
+    <div flex layout="row" layout-padding layout-align="start center">
       <div flex="20" class="md-subhead">
-        <div>{{report.name}}</div>
-        <small>#{{report.outbreakNumber}}</small>
+        <div>{{report.outbreakNumber}}</div>
+      </div>
+      <div flex="20" layout="row">
+        <osr-status-icon flex status="report.status"></osr-status-icon>
       </div>
       <div flex="20" class="md-subhead text-right">
         <div>{{report.reportedDate | date}}</div>

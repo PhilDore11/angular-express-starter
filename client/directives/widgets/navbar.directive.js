@@ -10,7 +10,7 @@ angular.module('app')
     };
   })
 
-  .controller('NavbarController', function($rootScope, $scope, $state, $window, ReportsService) {
+  .controller('NavbarController', function($rootScope, $scope, $state, $mdDialog, $window, ReportsService) {
 
     function isReportComplete(report) {
       return _.isEqual(report.status, 'COMPLETE');
@@ -22,8 +22,22 @@ angular.module('app')
           divider: true
         }, {
           icon: 'done',
-          state: 'reports.report.complete.edit',
-          label: 'Complete Report'
+          label: 'Complete Report',
+          click: function(ev) {
+            $mdDialog.show({
+              controller: 'ReportEditCompleteController',
+              templateUrl: 'components/reports/report/complete/completeModal.tpl.html',
+              parent: angular.element(document.body),
+              targetEvent: ev,
+              clickOutsideToClose: true,
+              fullscreen: true,
+              scope: $scope,
+              preserveScope: true
+            }).then(function() {
+              $scope.report = report; // Reset Report
+            });
+          }
+
       }];
 
       var actions = [{

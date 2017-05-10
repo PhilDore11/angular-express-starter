@@ -4,6 +4,7 @@ angular.module('app')
 
   .directive('osrStatusIcon', function() {
     return {
+      replace: true,
       scope: {
         status: '='
       },
@@ -14,7 +15,7 @@ angular.module('app')
   .controller('StatusIconController', function($scope) {
     $scope.getStatusTheme = function() {
       switch ($scope.status) {
-        case 'IN_PROGRESS':
+        case 'DRAFT':
           return 'grey';
         case 'COMPLETE':
           return 'green';
@@ -25,9 +26,22 @@ angular.module('app')
       }
     };
 
+    $scope.getStatusColor = function() {
+      switch ($scope.status) {
+        case 'DRAFT':
+          return 'white';
+        case 'COMPLETE':
+          return 'white';
+        case 'APPROVED':
+          return 'white';
+        default:
+          return 'black';
+      }
+    };
+
     $scope.getStatusIcon = function() {
       switch ($scope.status) {
-        case 'IN_PROGRESS':
+        case 'DRAFT':
           return 'more_horiz';
         case 'COMPLETE':
           return 'done';
