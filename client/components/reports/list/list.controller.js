@@ -17,9 +17,7 @@ angular.module('app.reports.list', [])
 
   .controller('ReportListController', function($scope, $state, reports, ReportsService) {
     $scope.query = {
-      order: 'name',
-      limit: 5,
-      page: 1
+      filter: ''
     };
 
     $scope.reports = reports;

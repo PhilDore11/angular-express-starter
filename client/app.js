@@ -19,20 +19,5 @@ angular.module('app', [
       .accentPalette('grey')
       .warnPalette('red');
 
-    // White
-    var whiteMap = $mdThemingProvider.extendPalette('grey', {
-      '500': '#ffffff',
-      'contrastDefaultColor': 'dark'
-    });
-    $mdThemingProvider.definePalette('white', whiteMap);
-
-    // Black
-    var blackMap = $mdThemingProvider.extendPalette('grey', {
-      '500': '#666666',
-      'contrastDefaultColor': 'light'
-    });
-    $mdThemingProvider.definePalette('black', blackMap);
-
-
     $urlRouterProvider.otherwise('/home');
   });

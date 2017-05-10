@@ -1,3 +1,5 @@
-<div ng-show="status" class="md-button md-raised" md-colors="::{background: getStatusTheme(), color: getStatusColor()}">
-  {{status}}
+<div layout="row" layout-padding layout-align="center center">
+  <span ng-show="status" class="status-icon {{getStatusClass()}}">
+    {{status}}
+  </span>
 </div>

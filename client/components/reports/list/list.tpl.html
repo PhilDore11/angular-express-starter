@@ -1,6 +1,25 @@
 <md-card>
   <md-toolbar class="md-accent md-hue-1">
     <div class="md-toolbar-tools">
+      <a class="md-button md-icon-button md-accent md-hue-3">
+        <md-icon>search</md-icon>
+        <md-tooltip md-direction="bottom">Find Report</md-tooltip>
+      </a>
+      <osr-input-container type="text"
+        label="Find Report"
+        form="query"
+        prop="filter">
+      </osr-input-container>
+      <a class="md-button md-icon-button md-accent md-hue-3" ng-if="query.filter" ng-click="query.filter = ''">
+        <md-icon>clear</md-icon>
+        <md-tooltip md-direction="bottom">Clear Search</md-tooltip>
+      </a>
+    </div>
+  </md-toolbar>
+</md-card>
+<md-card>
+  <md-toolbar class="md-accent md-hue-1">
+    <div class="md-toolbar-tools">
       <div flex="15" class="md-caption">Outbreak Number</div>
       <div flex="15" class="md-caption text-right">Reported Date</div>
       <div flex="15" class="md-caption text-right">Modified Date</div>
@@ -16,7 +35,7 @@
     </div>
   </md-toolbar>
   <md-divider></md-divider>
-  <md-toolbar class="md-accent md-hue-1" ng-repeat="report in reports">
+  <md-toolbar class="md-accent md-hue-1" ng-repeat="report in reports | filter:query.filter">
     <div class="md-toolbar-tools">
       <div flex="15" class="md-subhead">
         <div>{{report.outbreakNumber}}</div>
@@ -29,7 +48,7 @@
         <div>{{report.modifiedDate | date}}</div>
         <small>{{report.modifiedDate | date:'shortTime'}}</small>
       </div>
-      <div flex="15" layout="row" layout-align="center center">
+      <div flex="15" class="md-subhead">
         <osr-status-icon status="report.status"></osr-status-icon>
       </div>
       <div flex="15" class="md-subhead text-right">

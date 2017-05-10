@@ -20,13 +20,30 @@
  * Toast
  */
 md-toast.md-success-toast-theme> .md-toast-content {
-  background-color: green;
+  background-color: #43A047;
+  color: white;
 }
 
 
 
 md-toast.md-error-toast-theme> .md-toast-content {
- background-color: red;
+ background-color: #b71c1c;
+ color: white;
+}
+
+/*
+ * Status
+ */
+.status-icon.status-complete {
+  background-color: #43A047;
+  color: white;
+}
+
+
+
+.status-icon.status-draft {
+ background-color: #757575;
+ color: white;
 }
 
 /*

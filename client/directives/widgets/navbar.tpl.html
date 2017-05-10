@@ -3,7 +3,7 @@
     <p class="md-display-1">Outbreak Summary Report Manager</p>
   </div>
 </md-toolbar>
-<md-toolbar ng- class="hide-print md-whiteframe-1dp" md-colors="{background: 'white'}">
+<md-toolbar ng- class="hide-print md-whiteframe-1dp md-accent md-hue-1">
   <div class="md-toolbar-tools">
     <div ng-if="report">
       {{report.outbreakNumber}}
@@ -12,12 +12,12 @@
     <div layout="row">
       <div ng-repeat="action in actions" layout="row">
         <md-divider ng-if="action.divider"></md-divider>
-        <a ng-if="!action.divider && action.state" class="md-button md-icon-button" ui-sref="{{action.state}}(stateParams)" ui-sref-active="md-raised">
-          <md-icon md-colors="{color: 'black'}">{{action.icon}}</md-icon>
+        <a ng-if="!action.divider && action.state" class="md-button md-icon-button md-accent md-hue-3" ui-sref="{{action.state}}(stateParams)" ui-sref-active="md-raised">
+          <md-icon>{{action.icon}}</md-icon>
           <md-tooltip md-direction="bottom">{{action.label}}</md-tooltip>
         </a>
-        <a ng-if="!action.divider && !action.state" class="md-button md-icon-button" ng-click="action.click()">
-          <md-icon md-colors="{color: 'black'}">{{action.icon}}</md-icon>
+        <a ng-if="!action.divider && !action.state" class="md-button md-icon-button md-accent md-hue-3" ng-click="action.click()">
+          <md-icon>{{action.icon}}</md-icon>
           <md-tooltip md-direction="bottom">{{action.label}}</md-tooltip>
         </a>
       </div>

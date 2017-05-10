@@ -13,42 +13,14 @@ angular.module('app')
     };
   })
   .controller('StatusIconController', function($scope) {
-    $scope.getStatusTheme = function() {
+    $scope.getStatusClass = function() {
       switch ($scope.status) {
         case 'DRAFT':
-          return 'grey';
+          return 'status-draft';
         case 'COMPLETE':
-          return 'green';
-        case 'APPROVED':
-          return 'indigo';
+          return 'status-complete';
         default:
-          return 'grey';
-      }
-    };
-
-    $scope.getStatusColor = function() {
-      switch ($scope.status) {
-        case 'DRAFT':
-          return 'white';
-        case 'COMPLETE':
-          return 'white';
-        case 'APPROVED':
-          return 'white';
-        default:
-          return 'black';
-      }
-    };
-
-    $scope.getStatusIcon = function() {
-      switch ($scope.status) {
-        case 'DRAFT':
-          return 'more_horiz';
-        case 'COMPLETE':
-          return 'done';
-        case 'APPROVED':
-          return 'done_all';
-        default:
-          return 'more_horiz';
+          return 'status-draft';
       }
     };
   });
