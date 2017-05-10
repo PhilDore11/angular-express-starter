@@ -1,8 +1,8 @@
 <md-toolbar class="md-accent md-hue-1">
   <div class="md-toolbar-tools">
-    <div flex class="md-subhead">Date</div>
-    <div flex class="md-subhead">Resident Cases</div>
-    <div flex class="md-subhead">Staff Cases</div>
+    <div flex class="md-caption">Date</div>
+    <div flex class="md-caption">Resident Cases</div>
+    <div flex class="md-caption">Staff Cases</div>
     <a class="md-button md-icon-button">
       <md-icon></md-icon>
     </a>
@@ -11,32 +11,33 @@
 <md-divider></md-divider>
 <md-toolbar class="md-accent md-hue-1" ng-repeat="entry in report.data">
   <div class="md-toolbar-tools">
-    <div flex>
+    <div flex class="md-subhead">
       <osr-input-container type="date"
         form="entry"
         prop="date"
         remove-error="true">
       </osr-input-container>
     </div>
-    <div flex>
+    <div flex class="md-subhead">
       <osr-input-container type="number"
         form="entry"
         prop="residentCases"
         remove-error="true">
       </osr-input-container>
     </div>
-    <div flex>
+    <div flex class="md-subhead">
       <osr-input-container type="number"
         form="entry"
         prop="staffCases"
         remove-error="true">
       </osr-input-container>
     </div>
-
-    <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow($index)">
-      <md-icon>delete</md-icon>
-      <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
-    </a>
+    <div>
+      <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow($index)">
+        <md-icon>delete</md-icon>
+        <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
+      </a>
+    </div>
   </div>
 </md-toolbar>
 <md-divider></md-divider>

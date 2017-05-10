@@ -1,32 +1,40 @@
-<div>
-  <md-toolbar class="md-whiteframe-1dp" md-colors="{background: 'white'}">
-    <div flex layout="row" layout-padding layout-align="start center">
-      <div flex="20" class="md-caption">Outbreak Number</div>
-      <div flex="20" class="md-caption">Outbreak Status</div>
-      <div flex="20" class="md-caption text-right">Reported Date</div>
-      <div flex="20" class="md-caption text-right">Modified Date</div>
+<md-card>
+  <md-toolbar class="md-accent md-hue-1">
+    <div class="md-toolbar-tools">
+      <div flex="15" class="md-caption">Outbreak Number</div>
+      <div flex="15" class="md-caption text-right">Reported Date</div>
+      <div flex="15" class="md-caption text-right">Modified Date</div>
+      <div flex="15" class="md-caption text-center">Outbreak Status</div>
+      <div flex="15" class="md-caption text-right">Completed Date</div>
       <div flex></div>
-      <md-menu>
-      </md-menu>
+      <a class="md-button md-icon-button">
+        <md-icon></md-icon>
+      </a>
+      <a class="md-button md-icon-button">
+        <md-icon></md-icon>
+      </a>
     </div>
   </md-toolbar>
-</div>
-<div>
-  <md-toolbar class="md-whiteframe-1dp" ng-repeat="report in reports" md-colors="{background: 'white'}">
-    <div flex layout="row" layout-padding layout-align="start center">
-      <div flex="20" class="md-subhead">
+  <md-divider></md-divider>
+  <md-toolbar class="md-accent md-hue-1" ng-repeat="report in reports">
+    <div class="md-toolbar-tools">
+      <div flex="15" class="md-subhead">
         <div>{{report.outbreakNumber}}</div>
       </div>
-      <div flex="20" layout="row">
-        <osr-status-icon flex status="report.status"></osr-status-icon>
-      </div>
-      <div flex="20" class="md-subhead text-right">
+      <div flex="15" class="md-subhead text-right">
         <div>{{report.reportedDate | date}}</div>
         <small>{{report.reportedDate | date:'shortTime'}}</small>
       </div>
-      <div flex="20" class="md-subhead text-right">
+      <div flex="15" class="md-subhead text-right">
         <div>{{report.modifiedDate | date}}</div>
         <small>{{report.modifiedDate | date:'shortTime'}}</small>
+      </div>
+      <div flex="15" layout="row" layout-align="center center">
+        <osr-status-icon status="report.status"></osr-status-icon>
+      </div>
+      <div flex="15" class="md-subhead text-right">
+        <div>{{report.completedDate | date}}</div>
+        <small>{{report.completedDate | date:'shortTime'}}</small>
       </div>
       <div flex></div>
       <div>
@@ -42,4 +50,4 @@
     </div>
     <md-divider ng-if="!$last"></md-divider>
   </md-toolbar>
-</div>
+</md-card>
