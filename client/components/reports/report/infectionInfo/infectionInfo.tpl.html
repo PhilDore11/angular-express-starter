@@ -41,4 +41,20 @@
   prop="secondaryAgentSpec"
   readonly="readonly">
 </osr-input-container>
-</div>
+
+<!-- Tertiary Agent -->
+<osr-select-container
+  label="Tertiary Agent"
+  form="report"
+  prop="tertiaryAgent"
+  options="outbreakAgents"
+  option-filter="{type: report.outbreakType.key}"
+  option-value="name"
+  readonly="readonly">
+</osr-select-container>
+<osr-input-container ng-if="report.tertiaryAgent.key === 'OTHER'"
+  label="Please Spefify"
+  form="report"
+  prop="tertiaryAgentSpec"
+  readonly="readonly">
+</osr-input-container>
