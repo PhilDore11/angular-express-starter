@@ -1,8 +1,20 @@
+'use strict';
+
 var _ = require('lodash');
 
 var mongoose = require('mongoose');
 
-// create a schema
+var dataEntrySchema = new mongoose.Schema({
+  date: Date,
+  residentCases: Number,
+  staffCases: Number
+});
+
+var unitDataSchema = new mongoose.Schema({
+  name: String,
+  data: [dataEntrySchema]
+});
+
 var reportSchema = new mongoose.Schema({
   modifiedDate: Date,
   createdDate: Date,
@@ -36,7 +48,7 @@ var reportSchema = new mongoose.Schema({
     key: String,
     name: String
   },
-  data: Array,
+  epiData: [unitDataSchema],
 
   successes: String,
   improvements: String

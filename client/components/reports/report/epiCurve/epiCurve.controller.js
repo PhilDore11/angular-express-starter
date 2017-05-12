@@ -6,34 +6,61 @@ angular.module('app.reports.report.epiCurve', [])
 
     var epiCurveData = {
       labels: [],
-      datasets: [{
-        type: 'bar',
-        label: 'Resident Cases',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-        borderColor: 'rgba(255, 99, 132, 1)',
-        data: []
-      }, {
-        type: 'bar',
-        label: 'Staff Cases',
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        data: []
-      }, {
-        type: 'line',
-        label: 'Total Cases',
-        backgroundColor: 'rgba(0, 0, 0, 0)',
-        borderColor: 'rgba(100, 100, 100, 1)',
-        data: []
-      }]
+      datasets: []
     };
 
     var reportData = [];
-    _.each($scope.report.data, function(dataEntry) {
-      epiCurveData.labels.push($filter('date')(dataEntry.date));
-      epiCurveData.datasets[0].data.push(dataEntry.residentCases);
-      epiCurveData.datasets[1].data.push(dataEntry.staffCases);
-      epiCurveData.datasets[2].data.push(dataEntry.residentCases + dataEntry.staffCases);
+    var colors = [{
+      resident: 'rgba(255, 99, 132, 0.2)',
+      staff: 'rgba(255, 99, 132, 0.4)',
+      border: 'rgba(255, 99, 132, 1)'
+    }, {
+      resident: 'rgba(54, 162, 235, 0.2)',
+      staff: 'rgba(54, 162, 235, 0.4)',
+      border: 'rgba(54, 162, 235, 1)'
+    }, {
+      resident: 'rgba(255, 206, 86, 0.2)',
+      staff: 'rgba(255, 206, 86, 0.4)',
+      border: 'rgba(255, 206, 86, 1)'
+    }, {
+      resident: 'rgba(75, 192, 192, 0.2)',
+      staff: 'rgba(75, 192, 192, 0.4)',
+      border: 'rgba(75, 192, 192, 1)'
+    }, {
+      resident: 'rgba(153, 102, 255, 0.2)',
+      staff: 'rgba(153, 102, 255, 0.4)',
+      border: 'rgba(153, 102, 255, 1)'
+    }, {
+      resident: 'rgba(255, 159, 64, 0.2)',
+      staff: 'rgba(255, 159, 64, 0.4)',
+      border: 'rgba(255, 159, 64, 1)'
+    }];
+    _.each($scope.report.epiData, function(unitData, index) {
+      epiCurveData.datasets.push({
+        type: 'bar',
+        label: [unitData.name, 'Resident Cases'].join(' '),
+        backgroundColor: colors[index].resident,
+        borderColor: colors[index].border,
+        data: []
+      });
+      epiCurveData.datasets.push({
+        type: 'bar',
+        label: [unitData.name, 'Staff Cases'].join(' '),
+        backgroundColor: colors[index].staff,
+        borderColor: colors[index].border,
+        data: []
+      });
+
+      var numDatasets = epiCurveData.datasets.length;
+      _.each(unitData.data, function(dataEntry, index) {
+        epiCurveData.labels.push($filter('date')(dataEntry.date));
+
+        epiCurveData.datasets[numDatasets-2].data.push(dataEntry.residentCases);
+        epiCurveData.datasets[numDatasets-1].data.push(dataEntry.staffCases);
+      });
     });
+
+    epiCurveData.labels = _.uniq(epiCurveData.labels);
 
     var ctx = document.getElementById('epiCurve');
     var myChart = new Chart(ctx, {

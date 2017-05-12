@@ -1,46 +1,21 @@
-<md-toolbar class="md-accent md-hue-1">
-  <div class="md-toolbar-tools">
-    <div flex class="md-caption">Date</div>
-    <div flex class="md-caption">Resident Cases</div>
-    <div flex class="md-caption">Staff Cases</div>
-    <a class="md-button md-icon-button">
-      <md-icon></md-icon>
-    </a>
-  </div>
-</md-toolbar>
-<md-divider></md-divider>
-<md-toolbar class="md-accent md-hue-1" ng-repeat="entry in report.data">
-  <div class="md-toolbar-tools">
-    <div flex class="md-subhead">
-      <osr-input-container type="date"
-        form="entry"
-        prop="date">
-      </osr-input-container>
-    </div>
-    <div flex class="md-subhead">
-      <osr-input-container type="number"
-        form="entry"
-        prop="residentCases">
-      </osr-input-container>
-    </div>
-    <div flex class="md-subhead">
-      <osr-input-container type="number"
-        form="entry"
-        prop="staffCases">
-      </osr-input-container>
-    </div>
-    <div>
-      <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow($index)">
-        <md-icon>delete</md-icon>
-        <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
-      </a>
-    </div>
-  </div>
-</md-toolbar>
-<md-divider></md-divider>
-<div flex layout="row">
-  <md-button flex ng-click="addDataRow()">
-    <md-icon>playlist_add</md-icon>
-    Add Data Row
-  </md-button>
+<div layout="row" layout-align="start center">
+  <osr-input-container type="text"
+    form="newUnit"
+    prop="name">
+  </osr-input-container>
+  <a class="md-button md-raised md-primary md-hue-2" ng-click="addDataUnit()">
+    Add Unit
+  </a>
 </div>
+<md-divider ng-if="report.epiData"></md-divider>
+<md-tabs md-dynamic-height md-border-bottom ng-if="report.epiData">
+  <md-tab ng-repeat="unitData in report.epiData" label="{{unitData.name}}">
+    <md-card ng-include src="'components/reports/report/dataEntry/dataEntryForm.tpl.html'"></md-card>
+    <md-divider></md-divider>
+    <div flex layout="row">
+      <md-button flex class="md-raised md-warn" ng-click="removeDataUnit($index)">
+        Remove Current Tab
+      </md-button>
+    </div>
+  </md-tab>
+</md-tabs>

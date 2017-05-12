@@ -1,0 +1,46 @@
+<md-toolbar class="md-accent md-hue-1">
+  <div class="md-toolbar-tools">
+    <div flex class="md-caption">Date</div>
+    <div flex class="md-caption">Resident Cases</div>
+    <div flex class="md-caption">Staff Cases</div>
+    <a class="md-button md-icon-button">
+      <md-icon></md-icon>
+    </a>
+  </div>
+</md-toolbar>
+<md-divider></md-divider>
+<md-toolbar class="md-accent md-hue-1" ng-repeat="entry in unitData.data">
+  <div class="md-toolbar-tools">
+    <div flex class="md-subhead">
+      <osr-input-container type="date"
+        form="entry"
+        prop="date">
+      </osr-input-container>
+    </div>
+    <div flex class="md-subhead">
+      <osr-input-container type="number"
+        form="entry"
+        prop="residentCases">
+      </osr-input-container>
+    </div>
+    <div flex class="md-subhead">
+      <osr-input-container type="number"
+        form="entry"
+        prop="staffCases">
+      </osr-input-container>
+    </div>
+    <div>
+      <a class="md-button md-fab md-mini md-warn" ng-click="removeDataRow(unitData, $index)">
+        <md-icon>delete</md-icon>
+        <md-tooltip md-direction="bottom">Remove Data Entry</md-tooltip>
+      </a>
+    </div>
+  </div>
+</md-toolbar>
+<md-divider></md-divider>
+<div flex layout="row">
+  <md-button flex ng-click="addDataRow(unitData)">
+    <md-icon>playlist_add</md-icon>
+    Add Data Row
+  </md-button>
+</div>
